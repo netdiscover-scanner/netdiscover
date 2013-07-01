@@ -75,7 +75,7 @@ echo "Process oui.txt (\"$TMPF\")..."
 # if RS is null string, then records are separated by blank lines...
 # but this isn't true in oui.txt
 
-LANG=C grep "base 16" $TMPF | $AWK --re-interval --assign URL="$URL" '
+LANG=C grep "base 16" $TMPF | sed "s/\"/'/g" | $AWK --re-interval --assign URL="$URL" '
 BEGIN {
 	NN = 0;
 	printf( \
@@ -95,9 +95,9 @@ BEGIN {
 }
 
 {
-	printf("   { \"%s\", ", $1);
-	for (i=4; i<NF+1; i++) printf $i " ";
-	printf("},\n");
+	printf("   { \"%s\", \"", $1);
+	for (i=4; i<NF; i++) printf $i " ";
+	printf("%s\" },\n", $NF);
 	NN++;
 }
 
