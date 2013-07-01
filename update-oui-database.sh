@@ -95,7 +95,7 @@ BEGIN {
 }
 
 {
-	printf("   { 0x%s, ", $1);
+	printf("   { \"%s\", ", $1);
 	for (i=4; i<NF+1; i++) printf $i " ";
 	printf("},\n");
 	NN++;
