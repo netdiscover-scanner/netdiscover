@@ -75,11 +75,8 @@ echo "Process oui.txt (\"$TMPF\")..."
 # if RS is null string, then records are separated by blank lines...
 # but this isn't true in oui.txt
 
-LANG=C $AWK --re-interval --assign URL="$URL" '
+LANG=C grep "base 16" $TMPF | $AWK --re-interval --assign URL="$URL" '
 BEGIN {
-	RS = "\n([[:blank:]]*\n)+";
-	FS = "\n";
-	MI = "";
 	NN = 0;
 	printf( \
 	  "/*\n" \
@@ -97,35 +94,18 @@ BEGIN {
 	  "struct oui oui_table[] = {\n", strftime("%d-%b-%Y"), URL);
 }
 
-(/[[:xdigit:]]{6}/) {
-	N1 = split($1,A1,/\t+/);
-	N2 = split($2,A2,/\t+/);
-	N3 = split(A2[1],PN,/ +/);
-#	printf("%i,%i,%i>%s<>%s<>%s< $1=%s<, $2=%s<, $3=%s<.\n",N1,N2,N3,PN[1],A1[2],A2[2],$1,$2,$3);
-#	V1 = gensub(/^[[:punct:]]+/,"",1,A1[2]);
-#	V2 = gensub(/^[[:punct:]]+/,"",1,A2[2]);
-	V1 = gensub(/^[[:blank:]]+/,"",1,A1[2]);
-	V2 = gensub(/^[[:blank:]]+/,"",1,A2[2]);
-	V0 = V2;
-	if (V0 ~ /^[[:blank:]]*$/) {
-		V0 = V1;
-	}
-	V = gensub(/\"/,"\\\\\"","g",V0);
-	if (MI != "")
-		printf("   { \"%s\", \"%s\" },\n", MI, MV);
-	MI = PN[1];
-	MV = V;
+{
+	printf("   { 0x%s, ", $1);
+	for (i=4; i<NF+1; i++) printf $i " ";
+	printf("},\n");
 	NN++;
 }
 
 END {
-	printf( \
-	  "   { \"%s\", \"%s\" },\n" \
-	  "   { NULL, NULL }\n" \
-	  "};\n" \
-	  "\n" \
-	  "// Total %i items.\n", MI, MV, NN);
-}' <"$TMPF" >"$DSTD/$DSTF"
+	printf("   { NULL, NULL }\n};\n\n");
+	printf("// Total %i items.\n\n", NN);
+}' >"$DSTD/$DSTF"
+
 
 if [ $? -ne 0 ]; then
   echo "$JA: $TMPF parsing error !"

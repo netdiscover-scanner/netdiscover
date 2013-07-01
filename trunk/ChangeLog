@@ -1,4 +1,5 @@
 Netdiscover 0.3-beta7 (Currently working on it)
+   * update-oui-database.sh script modified to work with latest oui.txt
    * Larry Reznick <lreznick@rezfam.com>: oui script fixes for redhat and code 
      reformatting to make it more readable including manpage
    * Emanuele Acri <crossbower@gmail.com>: Libnet injection replaced by pcap
