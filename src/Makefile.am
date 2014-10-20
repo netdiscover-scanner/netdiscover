@@ -17,5 +17,5 @@ netdiscover_SOURCES = \
         data_unique.c
 
 netdiscover_LDADD = \
-	-lpthread -lpcap -lnet
+	-lpthread -lpcap
 
