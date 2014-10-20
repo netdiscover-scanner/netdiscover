@@ -35,7 +35,7 @@ extern "C"
 #endif
 
 #include <pcap.h>
-#include <netinet/ether.h>
+#include <netinet/if_ether.h>
 #include "data_al.h"
 
    /* If system is Solaris */
