@@ -60,8 +60,12 @@ if ! [ -f "$TMPF" -a -s "$TMPF" ]; then
         if [[ -x /usr/bin/wget ]]; then
           wget --quiet --output-document="$TMPF" $URL
         else
-           echo "$JA: Can't obtain \"$URL\"!"
-           exit 1
+          if [[ -x /usr/bin/curl ]]; then
+             curl -s $URL >"$TMPF"
+          else
+             echo "$JA: Can't obtain \"$URL\"!"
+             exit 1
+          fi
         fi
      fi
   fi
