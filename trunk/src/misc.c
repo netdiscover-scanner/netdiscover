@@ -39,6 +39,7 @@
 char **known_mac_table;
 
 
+/*
 struct ether_addr **split_mac_list(char *string)
 {
    int x;
@@ -47,13 +48,13 @@ struct ether_addr **split_mac_list(char *string)
    struct ether_addr **macs;
    const char delimiters[] = ",";
 
-   /* Count number of items in the string  */
+   // Count number of items in the string
    for (x=0; x<strlen(string); x++)
        if (string[x] == delimiters[0]) count++;
    
    macs = (struct ether_addr **) malloc (count + 2);
    
-   /* Fill the ignore_macs list */
+   // Fill the ignore_macs list
    x = 0;
    aux = strtok (string, delimiters);
    while (aux != NULL) {
@@ -65,6 +66,7 @@ struct ether_addr **split_mac_list(char *string)
 
    return macs;
 }
+*/
 
 
 void string_cutter(char *string, int size)
