@@ -26,7 +26,7 @@
  */
  
 #define _GNU_SOURCE
-#define VERSION "0.3-beta7"
+#define VERSION "0.3-pre-beta7"
 
 #include <stdio.h>
 #include <pthread.h>

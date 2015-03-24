@@ -37,6 +37,11 @@
 #include "data_al.h"
 
 
+#include <sys/ioctl.h>
+#include <net/if.h>
+#include <net/if_arp.h>
+
+
 #define ARP_REPLY "\x00\x02"
 #define ARP_REQUEST "\x00\x01"
 
@@ -169,10 +174,53 @@ void process_arp_header(struct data_registry *new_reg, const u_char* packet)
             packet[38], packet[39], packet[40], packet[41]);
 }
 
+/* Get our mac address */
+void get_mac(char *disp)
+{
+
+#ifdef __linux__
+  struct ifreq ifr;
+  size_t if_name_len = strlen(disp);
+
+  if (if_name_len < sizeof(ifr.ifr_name)) {
+    memcpy(ifr.ifr_name, disp, if_name_len);
+    ifr.ifr_name[if_name_len] = 0;
+  } else {
+    printf("interface name is too long");
+    exit(1);
+  }
+
+  int fd = socket(AF_UNIX,SOCK_DGRAM,0);
+  if (fd == -1) {
+    printf("%s", strerror(errno));
+    exit(1);
+  }
+
+  if (ioctl(fd,SIOCGIFHWADDR,&ifr) == -1) {
+    int temp_errno = errno;
+    close(fd);
+    printf("%s", strerror(temp_errno));
+    exit(1);
+  }
+  close(fd);
+
+  if (ifr.ifr_hwaddr.sa_family != ARPHRD_ETHER) {
+    printf("not an Ethernet interface");
+    exit(1);
+  }
+
+  //unsigned char* mac = (unsigned char*) ;
+  memcpy(smac, ifr.ifr_hwaddr.sa_data, ETH_ALEN);
+#else
+   //printf("Unsuported OS\n");
+   //exit(1);
+#endif
+}
+
+
 /* Init device for libpcap and get mac addr */
 void inject_init(char *disp)
 {
-   char *ourmac;
    char loc_errbuf[PCAP_ERRBUF_SIZE];
 
    /* Open interface for injection */
@@ -182,15 +230,7 @@ void inject_init(char *disp)
       exit(1);
    }
 
-   /* Get our mac addr */
-   if (ourmac == NULL) {
-
-      ourmac = (char *) malloc (sizeof(char) * 18);
-      sprintf(ourmac, "%02x:%02x:%02x:%02x:%02x:%02x",
-            smac[0], smac[1], smac[2],
-            smac[3], smac[4], smac[5]);
-   }
-
+   get_mac(disp);
 }
 
 
