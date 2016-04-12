@@ -97,7 +97,7 @@ void unique_print_line()
    strcat(line, tline);
 
    /* Fill again with spaces and cut the string to fit width */
-   for (j=strlen(line); j<win_sz.ws_col - 1; j++)
+   for (j=strlen(line); (j<win_sz.ws_col - 1) && (j<sizeof(line)-1); j++)
       strcat(line, blank);
    string_cutter(line, win_sz.ws_col - 1);
 
