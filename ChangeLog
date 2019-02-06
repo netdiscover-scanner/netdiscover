@@ -1,7 +1,13 @@
+Netdiscover 0.4.1
+   * Added some missing entries in last changelog (0.4).
+
 Netdiscover 0.4
    * Added a checklist for release a new version (file doc/UPDATE-CHECK).
    * Added a distclean-local target to Makefile.am to remove files after a
      'make distclean'.
+   * Added a new script to update OUI table (src/oui.h).
+   * Fixed a segmentation fault after start in a terminal with more than
+     300 columns (Debian bug #818791).
    * Fixed -l option in manpage.
    * Fixed spelling errors in final binary and in manpage.
    * Moved the old script update-oui-database-legacy.sh to new directory
