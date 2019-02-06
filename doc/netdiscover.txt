@@ -1,0 +1,103 @@
+NAME
+  netdiscover - active/passive arp reconnaissance tool
+
+SYNOPSIS
+  netdiscover [-i device] [-r range | -l file | -p] [-m file] [-F filter]
+              [-s time] [-c count] [-n node] [-dfLNPS]
+
+DESCRIPTION
+  netdiscover is an active/passive ARP reconnaissance tool, initially developed
+  to gain information about wireless networks without DHCP servers in wardriving
+  scenarios. It can also be used on switched networks. Built on top of libnet
+  and libpcap, it can passively detect online hosts or search for them by
+  sending ARP requests.
+
+  Furthermore, it can be used to inspect your network's ARP traffic, or find
+  network addresses using auto scan mode, which will scan for common local
+  networks.
+
+OPTIONS
+  -i device  The network interface to sniff and inject packets. If no interface
+             is specified, first available will be used.
+  -r range   Scan a given range instead of auto scan. Valid range values area
+             for example: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8.
+  -l file    Scan ranges contained on the given file, it must contain one range
+             per line.
+  -p         Enable passive mode. In passive mode, netdiscover does not send
+             anything, but does only sniff.
+  -m file    Scan the list of known MACs and host names.
+  -F filter  Customize pcap filter expression (default: "arp").
+  -s time    Sleep given time in milliseconds between each ARP request
+             injection. (default 1)
+  -c count   Number of times to send each ARP request. Useful for networks with
+             packet loss, so it will scan given times for each host.
+  -n node    Last IP octet of the source IP used for scanning. You can change
+             it if the default host is already used. (allowed range: 2 to 253,
+             default 66)
+  -d         Ignore configuration files at home dir (for autoscan and fast mode
+             only. This will use default ranges and IPs for autoscan and fast
+             mode. See below for information about configuration files.
+  -f         Enable fast mode scan. This will only scan for .1, .100 and .254
+             on each network. This mode is useful while searching for ranges
+             being used. After you found such range you can make a specific
+             range scan to find online boxes.
+  -L         When using -P, continue program execution after the active scan
+             phase to capture ARP packets passively.
+  -N         Do not print header. Only valid when -P is enabled.
+  -P         Produces output suitable to be redirected into a file or be parsed
+             by another program, instead of using interactive mode. Enabling
+             this option, netdiscover will stop after scanning given ranges.
+  -S         Enable sleep time suppression between each request. If set,
+             netdiscover will sleep after having scanned 255 hosts instead of
+             sleeping after each one. This mode was used in netdiscover 0.3
+             beta4 and before. Avoid this option in networks with packet loss,
+             or in wireless networks with low signal level. (also called
+             hardcore mode)
+
+USAGE
+  If passive mode (-p), scan list (-l) or scan range (-r) options aren't
+  enabled, netdiscover will scan for common LAN addresses.
+
+  Screen control keys:
+
+    h  Show help screen.
+    j  Scroll down (or down arrow).
+    k  Scroll up (or up arrow).
+    .  Scroll page up.
+    ,  Scroll page down.
+    q  Close help screen or end application.
+
+  Screen views:
+
+    a  Show ARP replies list.
+    r  Show ARP requests list.
+    u  Show unique hosts detected.
+
+CONFIG FILES
+  There are 2 configuration files that netdiscover will look for, each time it
+  is executed. If files doesn't exist, netdiscover will use default values. You
+  can use the -d switch to disable reading and loading configuration files.
+
+  ~/.netdiscover/ranges  
+          This file contains a list of ranges (one per line) used for auto scan
+          mode instead of default ranges. By default netdiscover will use a list
+          of common ranges used on local networks.
+
+  Example:
+
+    192.168.21.0/24
+    172.26.0.0/16
+    10.0.0.0/8
+
+  ~/.netdiscover/fastips  
+          List containing the last octect of the IPs to be scanned on each
+          subnet, when using fast mode, by default (1,100,154). You must
+          put a number per line.
+
+AUTHOR
+  netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>.
+
+  This manual page was originally written by Nicolas Weyland, for the Debian
+  project. This man page has been merged into netdiscover project, and
+  modified from the original.
+
