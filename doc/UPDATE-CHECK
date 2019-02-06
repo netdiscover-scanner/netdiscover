@@ -2,6 +2,7 @@ When updating, change the following files (if needed):
 
 - AUTHORS
 - ChangeLog
+- Check for spelling errors in ChangeLog and manpage.
 - configure.ac (VERSION)
 - manpage (DATE, version, options)
 - README (new options, etc.)
