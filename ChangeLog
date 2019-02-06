@@ -1,6 +1,19 @@
+Netdiscover 0.4
+   * Added a checklist for release a new version (file doc/UPDATE-CHECK).
+   * Added a distclean-local target to Makefile.am to remove files after a
+     'make distclean'.
+   * Fixed -l option in manpage.
+   * Fixed spelling errors in final binary and in manpage.
+   * Moved the old script update-oui-database-legacy.sh to new directory
+     'legacy'.
+   * Updated OUI table.
+   * Updated project homepage in several files to point to GitHub.
+   * Updated README to get all options from manpage.
+   * Updated the address for bugs list in configure.ac.
+
 Netdiscover 0.3-beta7 (Currently working on it)
    * update-oui-database.sh script modified to work with latest oui.txt
-   * Larry Reznick <lreznick@rezfam.com>: oui script fixes for redhat and code 
+   * Larry Reznick <lreznick@rezfam.com>: oui script fixes for redhat and code
      reformatting to make it more readable including manpage
    * Emanuele Acri <crossbower@gmail.com>: Libnet injection replaced by pcap
    * Frantisek Hanzlik <franta@hanzlici.cz>: oui script speed drastically
@@ -12,7 +25,7 @@ Netdiscover 0.3-beta7 (Currently working on it)
    * Autotools scripts updated
    * Fixed scroll limits & some screen improvements
    * Fixed crash when freeing common ranges list at end of scan
-   * New data abstraction layer added to handle diferent view modes
+   * New data abstraction layer added to handle different view modes
    * Included script to update oui database.
    * Added custom pcap filter option. Patch by Gustavo Chain.
    * Some code layout clean.
@@ -20,12 +33,12 @@ Netdiscover 0.3-beta7 (Currently working on it)
    * fhandle.c fixed to be able to handle ms-dos line format. Patch by Alex.
    * Some ranges not working through -r option fixed. Patch by Alex.
    * Improved network addresses sanity checks, thanks to Alex.
-   * Netmask will be setup to /24 by default if its omited, thanks to Alex.
+   * Netmask will be setup to /24 by default if its omitted, thanks to Alex.
    * Added .2 .200 hosts to be scanned on fast mode, thanks again to Alex.
    * Some unnecessary mallocs where removed to prevent memory leaks,
      thanks to Alex (SuD) for the patch.
    * Hang when "h" is pressed twice fixed
-   * Madriva and RedHat rpm .spec files added, thanks to Francis Giraldeau
+   * Mandriva and RedHat rpm .spec files added, thanks to Francis Giraldeau
      and Guillaume Pratte for the contribution
    * Buffer overflow on search_vendor fixed, thanks to Guillaume Pratte
    * Solaris bus error when freeing a pointer returned by getenv fixed
@@ -56,16 +69,16 @@ Netdiscover 0.3-beta5
    
 Netdiscover 0.3-beta4
    * Fixed header checks on configure.in, thanks to Charlie Brady for reporting
-   * Supress sleep time between each arp request, instead sleep between each
+   * Suppress sleep time between each arp request, instead sleep between each
      network scanned, also called the hardcore mode :) (like in older betas)
    * Added request count option (-c switch)
    * Some screen display changes
    * Supports decimal sleep times
    * Some changes to support gcc 2.95
    * Added customizable array for ips scanned on fast mode
-   * Some changes made arround scanning loops, and sleep time, the scan will be 
+   * Some changes made around scanning loops, and sleep time, the scan will be 
      slower by default, but safer (longer sleeps to avoid packet loss)
-   * Changed usage parameters, to easyer way (thanks to SuD for the idea)
+   * Changed usage parameters, to easier way (thanks to SuD for the idea)
    
 Netdiscover 0.3-beta3
    * Completing documentation for 0.3 final release
@@ -74,12 +87,12 @@ Netdiscover 0.3-beta3
    * Improved configure.in, now checks the system, libnet.h and pcap.h
    
 Netdiscover 0.3-beta2
-   * Added mac vendor database, and identifing
+   * Added mac vendor database, and identifying
    
 Netdiscover 0.3-beta1
    * Added other thread for screen refresh, also refresh time as parameter
    * Fast scan mode, will only scan for .1, .100 and .254 of each network
-   * Improved arp packet forgery, now doesnt lose packets
+   * Improved arp packet forgery, now doesn't lose packets
    * No more lamme ip changing at given interface, now you can browse
      while scanning, and ioctls where removed
    * A lot more of fixes for portability
