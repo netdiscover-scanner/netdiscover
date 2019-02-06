@@ -1,5 +1,5 @@
 NAME
-  netdiscover - active/passive arp reconnaissance tool
+  netdiscover - active/passive ARP reconnaissance tool
 
 SYNOPSIS
   netdiscover [-i device] [-r range | -l file | -p] [-m file] [-F filter]
