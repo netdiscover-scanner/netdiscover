@@ -302,7 +302,8 @@ int main(int argc, char **argv)
          _data_unique.print_simple_header();
 
    } else {
-      system("clear");
+      int retsys = system("clear");
+      if (retsys == -1){ printf("clear system call failed"); }
       pthread_create(&screen, NULL, screen_refresh, (void *)NULL);
       pthread_create(&keys, NULL, keys_thread, (void *)NULL);
    }
