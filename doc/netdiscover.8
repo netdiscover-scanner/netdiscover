@@ -26,8 +26,9 @@ Scan a given range instead of auto scan. Valid range values area for
 example: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8.
 
 .TP
-\fB\-l\fR file Scan ranges contained on the given file, it must
-contain one range per line.
+\fB\-l\fR file
+Scan ranges contained on the given file, it must contain one range per
+line.
 
 .TP
 \fB\-p\fR
@@ -61,14 +62,14 @@ wireless networks with low signal level. (also called hardcore mode)
 .TP
 \fB\-f\fR
 Enable fast mode scan. This will only scan for .1, .100 and .254 on
-each network. This mode is usefull while searching for ranges being
+each network. This mode is useful while searching for ranges being
 used. After you found such range you can make a specific range scan to
 find online boxes.
 
 .TP
 \fB\-d\fR
 Ignore configuration files at home dir, this will use defaults ranges
-and ips for autoscan and fast mode. See below for information about
+and IPs for autoscan and fast mode. See below for information about
 configuration files.
 
 .TP
@@ -83,7 +84,7 @@ When using -P, continue program execution after the active scan phase
 to capture ARP packets passively.
 
 .SH USAGE
-If passive mode (-p), scan list (-l) or scan range (-r) options arent
+If passive mode (-p), scan list (-l) or scan range (-r) options aren't
 enabled, netdiscover will scan for common lan addresses.
 .PP
 Screen control keys 
@@ -102,7 +103,7 @@ Scroll up (or up arrow)
 
 .TP
 \fBa\fR
-Show arp replys list
+Show arp replies list
 
 .TP
 \fBr\fR
@@ -114,7 +115,7 @@ Close help screen or end application
 
 .SH CONFIG FILES
 There are 2 configuration files that netdiscover will look for, each
-time it is executed, if file doesnt exist it will use default values.
+time it is executed, if file doesn't exist it will use default values.
 You can use the -d switch to disable reading and loading configuration
 files.
 
@@ -131,7 +132,7 @@ Example:\fR
 
 .TP
 \fB~/.netdiscover/fastips\fR
-List contaning the last octect of the ips to be scanned on each
+List containing the last octect of the IPs to be scanned on each
 subnet, when using fast mode, by default (1,100,154).
 
 Example:\fR
