@@ -1,5 +1,5 @@
 /*
- * Organizationally Unique Identifier list downloaded on 2019-02-05
+ * Organizationally Unique Identifier list downloaded on 2019-02-06
  * Automatically generated from http://standards.ieee.org/develop/regauth/oui/oui.txt
  * For Netdiscover by Jaime Penalba
  *
@@ -16801,6 +16801,7 @@ struct oui oui_table[] = {
     { "4C6641", "SAMSUNG ELECTRO-MECHANICS(THAILAND)" },
     { "4C6AF6", "HMD Global Oy" },
     { "4C6E6E", "Comnect Technology CO.,LTD" },
+    { "4C6F9C", "GUANGDONG OPPO MOBILE TELECOMMUNICATIONS CORP.,LTD" },
     { "4C72B9", "PEGATRON CORPORATION" },
     { "4C7367", "Genius Bytes Software Solutions GmbH" },
     { "4C73A5", "KOVE" },
@@ -18704,6 +18705,7 @@ struct oui oui_table[] = {
     { "70DA9C", "TECSEN" },
     { "70DB98", "Cisco Systems, Inc" },
     { "70DDA1", "Tellabs" },
+    { "70DDA8", "GUANGDONG OPPO MOBILE TELECOMMUNICATIONS CORP.,LTD" },
     { "70DEE2", "Apple, Inc." },
     { "70DEF9", "FAI WAH INTERNATIONAL (HONG KONG) LIMITED" },
     { "70DF2F", "Cisco Systems, Inc" },
@@ -18987,6 +18989,7 @@ struct oui oui_table[] = {
     { "7828CA", "Sonos, Inc." },
     { "7829ED", "ASKEY COMPUTER CORP" },
     { "782BCB", "Dell Inc." },
+    { "782C29", "New H3C Technologies Co., Ltd" },
     { "782D7E", "TRENDnet, Inc." },
     { "782EEF", "Nokia Corporation" },
     { "782F17", "Xlab Co.,Ltd" },
@@ -22101,6 +22104,7 @@ struct oui oui_table[] = {
     { "B0FAEB", "Cisco Systems, Inc" },
     { "B0FC0D", "Amazon Technologies Inc." },
     { "B0FC36", "CyberTAN Technology Inc." },
+    { "B0FD0B", "IEEE Registration Authority" },
     { "B0FEBD", "Private" },
     { "B40016", "INGENICO TERMINALS SAS" },
     { "B4009C", "CableWorld Ltd." },
@@ -23728,6 +23732,7 @@ struct oui oui_table[] = {
     { "D41E35", "TOHO Electronics INC." },
     { "D41F0C", "JAI Oy" },
     { "D4206D", "HTC Corporation" },
+    { "D420B0", "Mist Systems, Inc." },
     { "D42122", "Sercomm Corporation." },
     { "D4223F", "Lenovo Mobile Communication Technology Ltd." },
     { "D4224E", "Alcatel Lucent" },
@@ -25954,4 +25959,4 @@ struct oui oui_table[] = {
     { NULL, NULL }
 };
 
-// Total 25940 items.
+// Total 25945 items.
