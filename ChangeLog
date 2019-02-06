@@ -1,5 +1,16 @@
-Netdiscover 0.4.1
+Netdiscover 0.5
    * Added some missing entries in last changelog (0.4).
+   * Fixed the following warning from GCC: "warning: ignoring return value
+     of ‘system’, declared with attribute warn_unused_result".
+   * Full updated the manpage and help page. Added missing options, examples,
+     etc.
+   * Removed INSTALL file. This file must be created by autotools when in
+     build process to always provide updated instructions.
+   * Removed Usage and Examples sections from README file. It will make easier
+     the maintenance. All information are in help and manpage.
+   * Updated checklist to release a new version.
+   * Updated OUI table (5 new changes since yesterday).
+   * Using txt2man to generate the manpage.
 
 Netdiscover 0.4
    * Added a checklist for release a new version (file doc/UPDATE-CHECK).
