@@ -25,5 +25,6 @@ distclean-local:
 	config.h.in \
 	configure \
 	doc/Makefile.in \
+	INSTALL \
 	Makefile.in \
 	src/Makefile.in
