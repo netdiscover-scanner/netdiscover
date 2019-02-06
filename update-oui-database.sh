@@ -7,7 +7,7 @@
 # This file is under GPL-2+ license.
 #
 # netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>
-# and is available at http://nixgeneration.com/~jaime/netdiscover/
+# and is available at https://github.com/netdiscover-scanner/netdiscover
 #
 # License for this script:
 #

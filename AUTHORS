@@ -2,15 +2,24 @@
                           AUTHORS & CONTRIBUTORS
 *******************************************************************************
 
-If you have any suggestion or bugs, please email <jpenalbae@gmail.com>
-Also if you want to contribute, feel free to send any patches.
+If you have any suggestion or bugs, file a bug here[1].
+Also if you want to contribute, feel free to send any patches or pull requests.
+
+[1] https://github.com/netdiscover-scanner/netdiscover/issues
 
 
 Netdiscover
 ===========
 
 Netdiscover has been written by Jaime Penalba Estebanez <jpenalbae@gmail.com>
-Web page can be found at http://www.nixgeneration.com/~jaime/netdiscover/
+The project page can be found here[2].
+
+[2] https://github.com/netdiscover-scanner/netdiscover
+
+For historical reasons, the old homepages for this project are listed below:
+
+- http://www.nixgeneration.com/~jaime/netdiscover/
+- https://sourceforge.net/projects/netdiscover/
 
 
 Contributors
@@ -23,4 +32,3 @@ Netdiscover includes the following contributions:
  - Parsable output patch by "Guillaume Pratte <guillaume@guillaumepratte.net>"
  - Known hosts list feature by "Janusz Uzycki <j.uzycki@elproma.com.pl>"
  - Fix for undefined docdir by "Janusz Uzycki <j.uzycki@elproma.com.pl>"
-
