@@ -326,7 +326,7 @@ void fill_screen()
              "\t |     q: exit this screen or end               | \n"
              "\t |                                              | \n"
              "\t |    \33[1mScreen views\33[0m                              | \n"
-             "\t |     a: show arp replys list                  | \n"
+             "\t |     a: show arp replies list                 | \n"
              "\t |     r: show arp requests list                | \n"
              "\t |     u: show unique hosts detected            | \n"
              "\t |                                              | \n"
