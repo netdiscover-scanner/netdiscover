@@ -1,34 +1,39 @@
-Welcome to Netdiscover 0.3 beta. Netdiscover is a network address discovering
-tool, developed mainly for those wireless networks without dhcp server, it
-also works on hub/switched networks. Its based on arp packets, it will send arp
-requests and sniff for replys.
+Netdiscover, by Jaime Penalba <jpenalbae@gmail.com>
+---------------------------------------------------
 
-Its my first public C tool, so dont be too hard with me, if some parts on the
-code looks like offuscated or are unreadable, and feel free to mail me with 
-suggestions or patches at <jpenalbae@gmail.com>
+Netdiscover is a network address discovering tool, developed mainly for those
+wireless networks without dhcp server, it also works on hub/switched networks.
+Its based on arp packets, it will send arp requests and sniff for replies.
 
-Also mail me for any bug or compilation error, it must compile with gcc 2.95 or
-newer.
+Its my first public C tool, so don't be too hard with me, if some parts on the
+code looks like obfuscated or are unreadable, and feel free to send suggestions
+or patches to https://github.com/netdiscover-scanner/netdiscover/issues
 
-An excesive cpu comsuption happens on OpenBSD, due to threads design and the
-use of pcap_open_live() with pcap_loop(), any sugestions for fix are welcome.
+Also notify me for any bug or compilation error, it must compile with gcc 2.95
+or newer.
+
+An excessive CPU consumption happens on OpenBSD, due to threads design and the
+use of pcap_open_live() with pcap_loop(), any suggestions for fix are welcome.
 
 
-Requeriments
+Requirements
 ============
 
  - libpcap
  - libnet > 1.1.2
  - Tested to work on Linux, Solaris MacOS X and OpenBSD, other unixes may work
- 
+
 
 Build
 =====
 
-$ sh update-oui-database.sh (optional)
+$ sh update-oui-database.sh (optional, to update the MAC addresses list)
+$ ./autogen.sh
 $ ./configure
 $ make
 # make install
+
+To return to original source code, you can use '$ make distclean' command.
 
 
 Usage
@@ -36,58 +41,66 @@ Usage
 
 Screen Keys:
 
-	- k/j (or up/down arrow keys) scroll up/down
-	- q quit
+  h Show help screen
+  j Scroll down (or down arrow)
+  k Scroll up (or up arrow)
+  a Show arp replies list
+  r Show arp requests list
+  q Close help screen or end application
 
 
-Usage: ./netdiscover [-i device] [-r range | -p] [-s time] [-n node] [-c count] [-f] [-S]
+Usage: netdiscover [-i device] [-r range | -l file | -p] [-s time] [-n node]
+                   [-c count] [-f] [-d] [-S] [-P] [-L]
 
-  -i device
-    The network device to sniff at and inject packets. If no device was
-    specified, first available will be used.
+   -i device
+          The network interface to sniff and inject packets. If no interface
+          is specified, first available will be used.
 
-  -r range
-    Scan a given range instead of auto scan. Valid range values are:
-    192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8
+   -r range
+          Scan a given range instead of auto scan. Valid range values area for
+          example: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8.
 
-  -p
-    Enable passive mode do not send anything, only sniff
+   -l file
+          Scan ranges contained on the given file, it must contain one range
+          per line.
 
-  -s time
-    It will sleep given time in milliseconds between each arp request
-    injection. (default 1)
+   -p     Enable passive mode. In passive mode, netdiscover does not send
+          anything, but does only sniff.
 
-  -c count
-    Number of times to send each arp reques. Usefull for networks with
-    packet loss, so it will scan given times for each host.
+   -s time
+          Sleep given time in milliseconds between each arp request injection.
+          (default 1)
 
-  -n node
-    Last ip octet used for scanning as source host, you can change it
-    if the default host is already used (from 2 to 253) (default 66)
+   -c count
+          Number of times to send each arp request. Useful for networks with
+          packet loss, so it will scan given times for each host.
 
-  -S
-    Enable sleep time supression betwen each request. I will sleep each 255
-    scanned hosts instead of do it by each one, this mode was used on 0.3 beta4
-    and older releases. Avoid this option on networks with packet lossing,
-    or in wireless networks with low signal level. (also called hardcore mode)
+   -n node
+          Last ip octet of the source ip used for scanning. You can change it
+          if the default host is already used. (allowed range: 2 to 253,
+          default 66)
 
-  -f
-    Enable fastmode scan, it will only scan for hosts .1, .100, .254 on each
-    network, usefull when searching for addresses being used, after find one
-    you can make a specific range scan to see online boxes.
-    Scanned hosts can be easily modified at fast_ips[] array on main.c source.
+   -S     Enable sleep time suppression between each request. If set, netdiscover
+          will sleep after having scanned 255 hosts instead of sleeping after
+          each one. This mode was used in netdiscover 0.3 beta4 and before.
+          Avoid this option in networks with packet loss, or in wireless networks
+          with low signal level. (also called hardcore mode)
 
+   -f     Enable fast mode scan. This will only scan for .1, .100 and .254 on
+          each network. This mode is useful while searching for ranges being
+          used. After you found such range you can make a specific range scan to
+          find online boxes.
 If -p or -r options are not used, netdiscover will automatically scan for common
-lan addresses. Those address lists can be modified at common_net[] on main.c
+LAN addresses. Those address lists can be modified at common_net[] on main.c
 
 
 Examples
 ========
 
-Scan common lan addresses on eth0
+Scan common LAN addresses on eth0
 # netdiscover -i eth0
 
-Fast scan common lan addresses on eth0 (search only for gateways)
+Fast scan common LAN addresses on eth0 (search only for gateways)
 # netdiscover -i eth0 -f
 
 Scan some fixed ranges
@@ -95,16 +108,16 @@ Scan some fixed ranges
 # netdiscover -i eth0 192.168.0.0/16
 # netdiscover -i eth0 10.0.0.0/8
 
-Scan common lan addresses with sleep time 0.5 instead of default 1
+Scan common LAN addresses with sleep time 0.5 instead of default 1
 # netdiscover -i eth0 -s 0.5
 
 Scan fixed range on fast mode with sleep time 0.5 instead of default 1
 # netdiscover -i eth0 192.168.0.0/16 -f -s 0.5
 
-Only sniff for arp traffic, dont send nothing
+Only sniff for arp traffic, don't send nothing
 # netdiscover -i eth0 -p
 
-Scan for common lan addresses using old hardcore mode (much more faster, but
+Scan for common LAN addresses using old hardcore mode (much more faster, but
 avoid it on networks with bad link)
 # netdiscover -i eth0 -S
 
@@ -114,5 +127,7 @@ More parameter combinations are possible, these are only some examples.
 Bugs & Contact
 ==============
 
-Feel free to mail me with any problem, bug, suggestions or fixes at:
+Feel free to notify me about any problem, bug, suggestions or fixes at:
+https://github.com/netdiscover-scanner/netdiscover/issues
+
 Jaime Penalba <jpenalbae@gmail.com>
