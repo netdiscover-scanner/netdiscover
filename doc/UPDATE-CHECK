@@ -1,0 +1,8 @@
+When updating, change the following files (if needed):
+
+- AUTHORS
+- ChangeLog
+- configure.ac (VERSION)
+- manpage (DATE)
+- src/oui.h (via update-oui-database.sh)
+- src/main.c (VERSION)
