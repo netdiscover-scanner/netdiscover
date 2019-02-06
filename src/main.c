@@ -519,25 +519,25 @@ void scan_range(char *disp, char *sip)
 /* Print usage instructions */
 void usage(char *comando)
 {
-   printf("Netdiscover %s [Active/passive arp reconnaissance tool]\n"
+   printf("Netdiscover %s [Active/passive ARP reconnaissance tool]\n"
       "Written by: Jaime Penalba <jpenalbae@gmail.com>\n\n"
-      "Usage: %s [-i device] [-r range | -l file | -p] [-m file] [-s time] [-n node] "
-      "[-c count] [-f] [-d] [-S] [-P] [-c]\n"
+      "Usage: %s [-i device] [-r range | -l file | -p] [-m file] [-F filter] "
+      "[-s time]  [-n node] [-c count] [-fdSPNL]\n"
       "  -i device: your network device\n"
       "  -r range: scan a given range instead of auto scan. 192.168.6.0/24,/16,/8\n"
       "  -l file: scan the list of ranges contained into the given file\n"
       "  -p passive mode: do not send anything, only sniff\n"
       "  -m file: scan the list of known MACs and host names\n"
-      "  -F filter: Customize pcap filter expression (default: \"arp\")\n"
-      "  -s time: time to sleep between each arp request (milliseconds)\n"
-      "  -n node: last ip octet used for scanning (from 2 to 253)\n"
-      "  -c count: number of times to send each arp reques (for nets with packet loss)\n"
+      "  -F filter: customize pcap filter expression (default: \"arp\")\n"
+      "  -s time: time to sleep between each ARP request (milliseconds)\n"
+      "  -n node: last IP octet used for scanning (from 2 to 253)\n"
+      "  -c count: number of times to send each ARP request (for nets with packet loss)\n"
       "  -f enable fastmode scan, saves a lot of time, recommended for auto\n"
       "  -d ignore home config files for autoscan and fast mode\n"
-      "  -S enable sleep time supression between each request (hardcore mode)\n"
+      "  -S enable sleep time suppression between each request (hardcore mode)\n"
       "  -P print results in a format suitable for parsing by another program\n"
       "  -N Do not print header. Only valid when -P is enabled.\n"
       "  -L in parsable output mode (-P), continue listening after the active scan is completed\n\n"
-      "If -r, -l or -p are not enabled, netdiscover will scan for common lan addresses.\n",
+      "If -r, -l or -p are not enabled, netdiscover will scan for common LAN addresses.\n",
       VERSION, comando);
 }
