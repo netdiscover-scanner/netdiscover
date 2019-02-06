@@ -3,6 +3,7 @@ When updating, change the following files (if needed):
 - AUTHORS
 - ChangeLog
 - configure.ac (VERSION)
-- manpage (DATE)
+- manpage (DATE, version, options)
+- README (new options, etc.)
 - src/oui.h (via update-oui-database.sh)
 - src/main.c (VERSION)
