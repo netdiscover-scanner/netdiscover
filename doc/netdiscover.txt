@@ -94,10 +94,43 @@ CONFIG FILES
           subnet, when using fast mode, by default (1,100,154). You must
           put a number per line.
 
+USAGE EXAMPLES
+  Scan common LAN addresses on eth0:
+
+    # netdiscover -i eth0
+
+  Fast scan common LAN addresses on eth0 (search only for gateways):
+
+    # netdiscover -i eth0 -f
+
+  Scan some fixed ranges:
+
+    # netdiscover -i eth0 172.26.0.0/24
+    # netdiscover -i eth0 192.168.0.0/16
+    # netdiscover -i eth0 10.0.0.0/8
+
+  Scan common LAN addresses with sleep time 0.5 instead of default 1:
+
+    # netdiscover -i eth0 -s 0.5
+
+  Scan fixed range on fast mode with sleep time 0.5 instead of default 1:
+
+    # netdiscover -i eth0 192.168.0.0/16 -f -s 0.5
+
+  Only sniff for ARP traffic, don't send nothing:
+
+    # netdiscover -i eth0 -p
+
+  Scan for common LAN addresses using old hardcore mode (much more faster, but
+  avoid it on networks with bad link):
+
+    # netdiscover -i eth0 -S
+
+  More parameter combinations are possible, these are only some examples.
+
 AUTHOR
   netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>.
 
   This manual page was originally written by Nicolas Weyland, for the Debian
   project. This man page has been merged into netdiscover project, and
-  modified from the original.
-
+  modified from the original by Jaime Penalba and Joao Eriberto Mota Filho.

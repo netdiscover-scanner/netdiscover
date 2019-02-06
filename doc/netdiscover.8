@@ -159,9 +159,70 @@ Example:
 List containing the last octect of the IPs to be scanned on each
 subnet, when using fast mode, by default (1,100,154). You must
 put a number per line.
+.SH USAGE EXAMPLES
+Scan common LAN addresses on eth0:
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0
+
+.fam T
+.fi
+Fast scan common LAN addresses on eth0 (search only for gateways):
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 -f
+
+.fam T
+.fi
+Scan some fixed ranges:
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 172.26.0.0/24
+    # netdiscover -i eth0 192.168.0.0/16
+    # netdiscover -i eth0 10.0.0.0/8
+
+.fam T
+.fi
+Scan common LAN addresses with sleep \fItime\fP 0.5 instead of default 1:
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 -s 0.5
+
+.fam T
+.fi
+Scan fixed \fIrange\fP on fast mode with sleep \fItime\fP 0.5 instead of default 1:
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 192.168.0.0/16 -f -s 0.5
+
+.fam T
+.fi
+Only sniff for ARP traffic, don't send nothing:
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 -p
+
+.fam T
+.fi
+Scan for common LAN addresses using old hardcore mode (much more faster, but
+avoid it on networks with bad link):
+.PP
+.nf
+.fam C
+    # netdiscover -i eth0 -S
+
+.fam T
+.fi
+More parameter combinations are possible, these are only some examples.
 .SH AUTHOR
 \fBnetdiscover\fP was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>.
 .PP
 This manual page was originally written by Nicolas Weyland, for the Debian
 project. This man page has been merged into \fBnetdiscover\fP project, and
-modified from the original.
+modified from the original by Jaime Penalba and Joao Eriberto Mota Filho.
