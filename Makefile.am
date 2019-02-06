@@ -16,3 +16,14 @@ EXTRA_DIST = \
 	rpm/redhat.spec \
 	update-oui-database.sh
 
+distclean-local:
+	-rm -rf autom4te.cache/ \
+	build-aux/
+
+	rm -f \
+	aclocal.m4 \
+	config.h.in \
+	configure \
+	doc/Makefile.in \
+	Makefile.in \
+	src/Makefile.in
