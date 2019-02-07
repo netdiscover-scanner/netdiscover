@@ -1,4 +1,4 @@
-Netdiscover 0.5
+Netdiscover 0.5 - 06 Feb. 2019
    * Added some missing entries in last changelog (0.4).
    * Fixed the following warning from GCC: "warning: ignoring return value
      of system, declared with attribute warn_unused_result".
@@ -12,7 +12,7 @@ Netdiscover 0.5
    * Updated OUI table (5 new changes since yesterday).
    * Using txt2man to generate the manpage.
 
-Netdiscover 0.4
+Netdiscover 0.4 - 06 Feb. 2019
    * Added a checklist for release a new version (file doc/UPDATE-CHECK).
    * Added a distclean-local target to Makefile.am to remove files after a
      'make distclean'.
@@ -28,7 +28,7 @@ Netdiscover 0.4
    * Updated README to get all options from manpage.
    * Updated the address for bugs list in configure.ac.
 
-Netdiscover 0.3-beta7 (Currently working on it)
+Netdiscover 0.3-beta7 (Currently working on it) - 24 Mar. 2015
    * update-oui-database.sh script modified to work with latest oui.txt
    * Larry Reznick <lreznick@rezfam.com>: oui script fixes for redhat and code
      reformatting to make it more readable including manpage
@@ -67,7 +67,7 @@ Netdiscover 0.3-beta7 (Currently working on it)
    * Hang on Ctrl+C fixed, thanks to Alex (SuD) for the patch
    * Improved argument handling, thanks to Alex (SuD) for reporting
    
-Netdiscover 0.3-beta6
+Netdiscover 0.3-beta6 - 22 Oct. 2005
    * Changed installation path to sbin
    * Added man page, Thanks to Nicolas Weyland  <ufoalien@weyland.ch>
    * Added help screen (pressing "h" while running)
@@ -77,14 +77,14 @@ Netdiscover 0.3-beta6
      arrow keys can now be used to scroll
    * Fixed packet length count display
    
-Netdiscover 0.3-beta5
+Netdiscover 0.3-beta5 - 01 Sep. 2005
    * Now arp request sender data is added to the stations list
    * Improved sniffer packet processing code
    * Major code cleaning / commenting done
    * If no interface is specified will autoselect firstone available
    * Better error handling, including interface and uid checking
    
-Netdiscover 0.3-beta4
+Netdiscover 0.3-beta4 - 24 Aug. 2005
    * Fixed header checks on configure.in, thanks to Charlie Brady for reporting
    * Suppress sleep time between each arp request, instead sleep between each
      network scanned, also called the hardcore mode :) (like in older betas)
@@ -97,16 +97,16 @@ Netdiscover 0.3-beta4
      slower by default, but safer (longer sleeps to avoid packet loss)
    * Changed usage parameters, to easier way (thanks to SuD for the idea)
    
-Netdiscover 0.3-beta3
+Netdiscover 0.3-beta3 - 08 Aug. 2005
    * Completing documentation for 0.3 final release
    * Added support to change last octet of scanning host (option "n")
    * Solaris and OpenBSD support added, also must work on other unixes
    * Improved configure.in, now checks the system, libnet.h and pcap.h
    
-Netdiscover 0.3-beta2
+Netdiscover 0.3-beta2 - 23 Jul. 2005
    * Added mac vendor database, and identifying
    
-Netdiscover 0.3-beta1
+Netdiscover 0.3-beta1 20 Jul. 2005
    * Added other thread for screen refresh, also refresh time as parameter
    * Fast scan mode, will only scan for .1, .100 and .254 of each network
    * Improved arp packet forgery, now doesn't lose packets
