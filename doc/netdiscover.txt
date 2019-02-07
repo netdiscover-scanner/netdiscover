@@ -131,12 +131,9 @@ USAGE EXAMPLES
 
     # netdiscover -p
 
-  Scan for common LAN addresses using old hardcore mode (much more faster, but
-  avoid it on networks with bad link):
-
 AUTHOR
   netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>.
 
   This manual page was originally written by Nicolas Weyland, for the Debian
-  project. This man page has been merged into netdiscover project, and
+  project. This man page has been merged into netdiscover project and
   modified from the original by Jaime Penalba and Joao Eriberto Mota Filho.

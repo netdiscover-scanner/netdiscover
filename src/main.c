@@ -27,7 +27,7 @@
  */
  
 #define _GNU_SOURCE
-#define VERSION "0.5"
+#define VERSION "0.5.1"
 
 #include <stdio.h>
 #include <pthread.h>

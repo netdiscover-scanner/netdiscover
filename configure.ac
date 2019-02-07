@@ -1,4 +1,4 @@
-AC_INIT([netdiscover], [0.5], [https://github.com/netdiscover-scanner/netdiscover/issues])
+AC_INIT([netdiscover], [0.5.1], [https://github.com/netdiscover-scanner/netdiscover/issues])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 AC_PROG_CC
