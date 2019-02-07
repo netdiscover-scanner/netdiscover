@@ -120,7 +120,7 @@ int load_known_mac_table(char *file)
       len = strlen(known_mac_table[i]);
 
       if (len < 12+2) { /* MAC number + '/0' + '!' = 12+2 chars */
-         printf("ERROR: no full MAC given in the file! (%s)\n",
+         printf("ERROR: no full MAC given in the file or empty line! (%s)\n",
                  known_mac_table[i]);
          sleep(5);
          /* protection - read what is possible */
