@@ -1,5 +1,5 @@
 /*
- * Organizationally Unique Identifier list downloaded on 2019-02-06
+ * Organizationally Unique Identifier list downloaded on 2019-02-07
  * Automatically generated from http://standards.ieee.org/develop/regauth/oui/oui.txt
  * For Netdiscover by Jaime Penalba
  *
@@ -24860,7 +24860,7 @@ struct oui oui_table[] = {
     { "E89EB4", "Hon Hai Precision Ind. Co.,Ltd." },
     { "E89FEC", "CHENGDU KT ELECTRONIC HI-TECH CO.,LTD" },
     { "E8A364", "Signal Path International / Peachtree Audio" },
-    { "E8A4C1", "Deep Sea Electronics PLC" },
+    { "E8A4C1", "Deep Sea Electronics Ltd" },
     { "E8A788", "XIAMEN LEELEN TECHNOLOGY CO., LTD" },
     { "E8A7F2", "sTraffic" },
     { "E8ABF3", "HUAWEI TECHNOLOGIES CO.,LTD" },

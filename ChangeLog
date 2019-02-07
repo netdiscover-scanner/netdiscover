@@ -3,6 +3,7 @@ Netdiscover 0.5.1 - 07 Feb. 2019
    * Added dates of releases in ChangeLog.
    * Added some copyright notices.
    * Several important fixes and improvements in manpage and help page.
+   * Updated OUI table (1 change since yesterday).
 
 Netdiscover 0.5 - 06 Feb. 2019
    * Added some missing entries in last changelog (0.4).
