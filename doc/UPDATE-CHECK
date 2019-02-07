@@ -4,7 +4,8 @@ When updating, change the following files (if needed):
 - ChangeLog
 - Check for spelling errors in ChangeLog and manpage.
 - configure.ac (VERSION)
-- manpage (DATE, version, options)
-- README (new options, etc.)
-- src/oui.h (via update-oui-database.sh)
+- doc/create-man.sh (DATE, version)
+- Generate a new manpage.
+- README
+- src/oui.h (refresh via update-oui-database.sh)
 - src/main.c (VERSION)
