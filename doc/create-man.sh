@@ -8,11 +8,11 @@
 TEST=$(txt2man -h 2> /dev/null)
 [ "$TEST" ] || { echo -e "\nYou need to install txt2man, from https://github.com/mvertes/txt2man.\n"; exit 1; }
 
-T2M_DATE="06 Feb 2019"
+T2M_DATE="07 Feb 2019"
 T2M_NAME=netdiscover
-T2M_VERSION=0.4.1
+T2M_VERSION=0.5.1
 T2M_LEVEL=8
-T2M_DESC="active/passive arp reconnaissance tool"
+T2M_DESC="active/passive ARP reconnaissance tool"
 
 # Don't change the following line
 txt2man -d "$T2M_DATE" -t $T2M_NAME -r $T2M_NAME-$T2M_VERSION -s $T2M_LEVEL -v "$T2M_DESC" $T2M_NAME.txt > $T2M_NAME.$T2M_LEVEL
