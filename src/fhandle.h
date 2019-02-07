@@ -2,8 +2,7 @@
  *            fhandle.h
  *
  *  Thu Dec 29 07:05:08 2005
- *  Copyright  2005  Jaime Peñalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2006 Jaime Peñalba Estebanez <jpenalbae@gmail.com>
  ****************************************************************************/
 
 /*

@@ -2,11 +2,10 @@
  *            screen.c
  *
  *  Tue Jul 12 03:23:41 2005
- *  Copyright  2005  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2009 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
+ *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
  *
- *  Contributors:
- *   Parsable output by Guillaume Pratte <guillaume@guillaumepratte.net>
  ****************************************************************************/
 
 /*

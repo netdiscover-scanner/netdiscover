@@ -2,11 +2,12 @@
  *            main.c
  *
  *  Sun Jul  3 07:35:24 2005
- *  Copyright  2005  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2016 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
+ *  Copyright 2007-2008 Gustavo Chain
+ *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
+ *  Copyright 2019      Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
  *
- *  Contributors:
- *   Parsable output by Guillaume Pratte <guillaume@guillaumepratte.net>
  ****************************************************************************/
 
 /*

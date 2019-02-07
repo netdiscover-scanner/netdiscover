@@ -2,8 +2,8 @@
  *            ifaces.c
  *
  *  Mon Jun 27 04:56:42 2005
- *  Copyright  2005  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2015 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2007-2008 Gustavo Chain
  ****************************************************************************/
 
 /*

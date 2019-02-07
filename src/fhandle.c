@@ -2,8 +2,8 @@
  *            fhandle.c
  *
  *  Thu Dec 29 07:04:39 2005
- *  Copyright  2005  Jaime Pealba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2008 Gustavo Chain
  ****************************************************************************/
 
 /*

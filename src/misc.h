@@ -2,8 +2,8 @@
  *            misc.h
  *
  *  Thu Jul 21 03:19:30 2005
- *  Copyright  2005  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2009 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
  ****************************************************************************/
 
 /*

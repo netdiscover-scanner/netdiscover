@@ -2,11 +2,10 @@
  *            ifaces.h
  *
  *  Mon Jun 27 04:56:18 2005
- *  Copyright  2005  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2005-2009 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
+ *  Copyright 2007-2008 Gustavo Chain
  *
- *  Contributors:
- *   Parsable output by Guillaume Pratte <guillaume@guillaumepratte.net>
  ****************************************************************************/
 
 /*

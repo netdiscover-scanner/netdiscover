@@ -2,10 +2,10 @@
  *            data_reply.c
  *
  *  Sat Apr  5 09:36:32 CEST 2008
- *  Copyright  2008  Jaime Penalba Estebanez
- *  jpenalbae@gmail.com
+ *  Copyright 2008-2016 Jaime Penalba Estebanez <jpenalbae@gmail.com>
+ *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
  *
- *  Data abstraction layer part for arp replys
+ *  Data abstraction layer part for arp replies
  ****************************************************************************/
 
 /*
