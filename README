@@ -1,6 +1,8 @@
 Netdiscover, by Jaime Penalba <jpenalbae@gmail.com>
 ---------------------------------------------------
 
+Welcome to official Netdiscover repository (since  Feb. 05, 2019).
+
 Netdiscover is a network address discovering tool, developed mainly for those
 wireless networks without dhcp server, it also works on hub/switched networks.
 Its based on arp packets, it will send arp requests and sniff for replies.
