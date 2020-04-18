@@ -19,3 +19,5 @@ netdiscover_SOURCES = \
 netdiscover_LDADD = \
 	-lpthread -lpcap
 
+netdiscover_CFLAGS = \
+	-fcommon
