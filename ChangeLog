@@ -1,6 +1,7 @@
 Netdiscover 0.6 - 17 Apr. 2020
+   * Added a CI test to be run by GitHub. (Eriberto)
    * Fix build with GCC 10. (Jaime Peñalba)
-   * Updated OUI table (Eriberto)
+   * Updated OUI table. (Eriberto)
 
 Netdiscover 0.5.1 - 07 Feb. 2019
    * Added an official repository notice in README.
