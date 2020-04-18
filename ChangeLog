@@ -1,5 +1,6 @@
 Netdiscover 0.6 - 17 Apr. 2020
    * Fix build with GCC 10. (Jaime Peñalba)
+   * Updated OUI table (Eriberto)
 
 Netdiscover 0.5.1 - 07 Feb. 2019
    * Added an official repository notice in README.
