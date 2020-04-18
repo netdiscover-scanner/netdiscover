@@ -8,9 +8,9 @@
 TEST=$(txt2man -h 2> /dev/null)
 [ "$TEST" ] || { echo -e "\nYou need to install txt2man, from https://github.com/mvertes/txt2man.\n"; exit 1; }
 
-T2M_DATE="07 Feb 2019"
+T2M_DATE="17 Apr 2020"
 T2M_NAME=netdiscover
-T2M_VERSION=0.5.1
+T2M_VERSION=0.6
 T2M_LEVEL=8
 T2M_DESC="active/passive ARP reconnaissance tool"
 

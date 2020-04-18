@@ -6,7 +6,7 @@
  *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
  *  Copyright 2007-2008 Gustavo Chain
  *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
- *  Copyright 2019      Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
+ *  Copyright 2019-2020 Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
  *
  ****************************************************************************/
 
@@ -27,7 +27,7 @@
  */
  
 #define _GNU_SOURCE
-#define VERSION "0.5.1"
+#define VERSION "0.6"
 
 #include <stdio.h>
 #include <pthread.h>
