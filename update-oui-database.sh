@@ -3,7 +3,7 @@
 # update-oui-database-ng.sh
 # This script creates the src/oui.h file needed by netdiscover.
 #
-# Copyright 2016 Joao Eriberto Mota Filho <eriberto@debian.org>
+# Copyright 2016-2020 Joao Eriberto Mota Filho <eriberto@debian.org>
 # This file is under GPL-2+ license.
 #
 # netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>
@@ -25,9 +25,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-VERSION=0.1
+VERSION=0.2
 
 # CHANGELOG
+#
+# v0.1, 2020-06-29, Eriberto
+#
+# * Drop 'sed -z' to execute in macOS.
+# * Drop not needed PATH variable, also for macOS.
 #
 # v0.1, 2016-04-13, Eriberto
 #
@@ -37,8 +42,6 @@ VERSION=0.1
 #####################
 # Initial variables #
 #####################
-
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 DATE=$(date +%F | tr -d "-")
 DATE2=$(date +%F)
@@ -158,7 +161,7 @@ EOT
 
 cat $NAME | grep "base 16" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' | \
   grep '[0-9A-F]' |  sort | sed 's/ /", "/' | sed 's/^/    { "/' | \
-  sed -z 's/\n/" },#/g' | tr '#' '\n' >> $OUIFILE
+  tr '\n' '#' | sed 's/#/" },#/g' | tr '#' '\n' >> $OUIFILE
 
 # Total of MACs
 
