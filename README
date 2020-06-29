@@ -29,7 +29,7 @@ Requirements
 Build
 =====
 
-$ sh update-oui-database.sh (optional, to update the MAC addresses list)
+$ ./update-oui-database.sh (optional, to update the MAC addresses list)
 $ ./autogen.sh
 $ ./configure
 $ make
