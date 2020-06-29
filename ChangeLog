@@ -1,3 +1,9 @@
+Netdiscover 0.7 - 29 Jun. 2020
+   * Updated create-man.sh to 2.0 version.
+   * Updated manpage dates.
+   * Updated update-oui-database.sh to be useful in macOS.
+   * Updated OUI table.
+
 Netdiscover 0.6 - 17 Apr. 2020
    * Added a CI test to be run by GitHub. (Eriberto)
    * Fix build with GCC 10. (Jaime Peñalba)
