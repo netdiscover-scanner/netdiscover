@@ -2,6 +2,7 @@ Netdiscover 0.8 - 11 Jul. 2021
    * Changed PCAP_TOUT from 0 to 512 in src/ifaces.h, to avoid no results when
      scanning with CIDR /24 if netdiscover is being built with libpcap >= 1.10.
      Thanks to Enrico Schmitz.
+   * Updated OUI table.
 
 Netdiscover 0.7 - 29 Jun. 2020
    * Updated create-man.sh to 2.0 version.
