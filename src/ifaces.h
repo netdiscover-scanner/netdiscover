@@ -5,6 +5,7 @@
  *  Copyright 2005-2009 Jaime Penalba Estebanez <jpenalbae@gmail.com>
  *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
  *  Copyright 2007-2008 Gustavo Chain
+ *  Copyright 2021      Enrico Schmitz
  *
  ****************************************************************************/
 
@@ -45,7 +46,7 @@ extern "C"
       typedef uint16_t u_int16_t;
       typedef uint8_t  u_int8_t;
    #else
-      #define PCAP_TOUT 0
+      #define PCAP_TOUT 512
    #endif
 
 
