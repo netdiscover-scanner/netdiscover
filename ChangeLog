@@ -3,6 +3,7 @@ Netdiscover 0.8.1 - 01 Nov. 2021
      Thanks to bcoles <bcoles@gmail.com>.
    * Updated manpage version and date.
    * Updated OUI table.
+   * Using version set in configure.ac for src/main.c.
 
 Netdiscover 0.8 - 11 Jul. 2021
    * Changed PCAP_TOUT from 0 to 512 in src/ifaces.h, to avoid no results when

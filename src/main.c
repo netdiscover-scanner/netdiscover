@@ -28,7 +28,6 @@
  */
  
 #define _GNU_SOURCE
-#define VERSION "0.8"
 
 #include <stdio.h>
 #include <pthread.h>
@@ -42,6 +41,7 @@
 #include "screen.h"
 #include "fhandle.h"
 #include "misc.h"
+#include "../config.h"
 
 #define RPATH  "%s/.netdiscover/ranges"
 #define FPATH  "%s/.netdiscover/fastips"
