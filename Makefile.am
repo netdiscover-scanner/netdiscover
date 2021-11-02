@@ -4,7 +4,7 @@ docdir = @docdir@
 SUBDIRS = src doc
 
 doc_DATA = \
-        README\
+        README.md\
         COPYING\
         AUTHORS\
         ChangeLog\

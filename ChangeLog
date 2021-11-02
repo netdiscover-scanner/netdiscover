@@ -1,5 +1,6 @@
 Netdiscover 0.8.1 - 01 Nov. 2021
-   * Replace deprecated function pcap_lookupdev() with pcap_findalldevs().
+   * Migrated README to README.md.
+   * Replaced deprecated function pcap_lookupdev() with pcap_findalldevs().
      Thanks to bcoles <bcoles@gmail.com>.
    * Updated manpage version and date.
    * Updated OUI table.
