@@ -237,13 +237,20 @@ int main(int argc, char **argv)
    /* If no iface was specified, autoselect one. exit, if no one available */
    if (datos.interface == NULL)
    {
-      datos.interface = pcap_lookupdev(errbuf);
+      pcap_if_t *devices = NULL;
 
-      if (datos.interface == NULL)
-      {
-         printf("Couldn't find default device: %s\n", errbuf);
+      if (pcap_findalldevs(&devices, errbuf) != 0) {
+         printf("Couldn't find capture devices: %s\n", errbuf);
          exit(1);
       }
+
+      if (devices == NULL || devices->name == NULL) {
+         printf("Couldn't find suitable capture device: %s\n", errbuf);
+         exit(1);
+      }
+
+      datos.interface = strdup(devices->name);
+      pcap_freealldevs(devices);
    }
 
    /* Load user config files or set defaults */
