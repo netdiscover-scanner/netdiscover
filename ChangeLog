@@ -1,3 +1,7 @@
+Netdiscover 0.8.1 - 01 Nov. 2021
+   * Replace deprecated function pcap_lookupdev() with pcap_findalldevs().
+     Thanks to bcoles <bcoles@gmail.com>.
+
 Netdiscover 0.8 - 11 Jul. 2021
    * Changed PCAP_TOUT from 0 to 512 in src/ifaces.h, to avoid no results when
      scanning with CIDR /24 if netdiscover is being built with libpcap >= 1.10.
