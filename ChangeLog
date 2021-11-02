@@ -1,6 +1,7 @@
 Netdiscover 0.8.1 - 01 Nov. 2021
    * Replace deprecated function pcap_lookupdev() with pcap_findalldevs().
      Thanks to bcoles <bcoles@gmail.com>.
+   * Updated manpage version and date.
    * Updated OUI table.
 
 Netdiscover 0.8 - 11 Jul. 2021
@@ -12,7 +13,7 @@ Netdiscover 0.8 - 11 Jul. 2021
 
 Netdiscover 0.7 - 29 Jun. 2020
    * Updated create-man.sh to 2.0 version.
-   * Updated manpage dates.
+   * Updated manpage date.
    * Updated update-oui-database.sh to be useful in macOS.
    * Updated OUI table.
 
