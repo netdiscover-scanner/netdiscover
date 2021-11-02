@@ -6,7 +6,7 @@
  *  Copyright 2006      Guillaume Pratte <guillaume@guillaumepratte.net>
  *  Copyright 2007-2008 Gustavo Chain
  *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
- *  Copyright 2019-2020 Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
+ *  Copyright 2019-2021 Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
  *  Copyright 2021      bcoles <bcoles@gmail.com>
  *
  ****************************************************************************/
