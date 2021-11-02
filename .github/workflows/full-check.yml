@@ -20,7 +20,7 @@ jobs:
            make
            sudo make install
            sudo make uninstall
-           make distclean 
+           make distclean
     - name: second_build
       run: |
            ./autogen.sh
@@ -30,3 +30,15 @@ jobs:
     - name: run_program
       run: |
            sudo netdiscover -h 2>&1 | egrep -i Netdiscover -A 30
+    - name: check_version
+      run: |
+           VERC=$(cat configure.ac | grep AC_INIT | cut -d"," -f2 | egrep -o '[0-9.]+')
+           VERP=$(netdiscover -h | grep Net | cut -d" " -f2)
+           if [ "$VERC" = "$VERP" ]
+           then
+              echo "Version $VERP confirmed"
+              exit 0
+           else
+              echo "Wrong version. configure.ac says $VERC, but netdiscover says $VERP"
+              exit 1
+           fi
