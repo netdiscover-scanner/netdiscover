@@ -120,37 +120,40 @@ void process_packet(u_char *args, struct pcap_pkthdr* pkthdr,
    new_header->length = pkthdr->len;            /* Packet size */
 
    /* Discard packets with our mac as source */
-   if (memcmp(new_header->smac, smac, 6) != 0) {
+   if (memcmp(new_header->smac, smac, 6) == 0)
+   {
+     free(new_header);
+     return;
+   }
 
-      unsigned char type[2];
-      memcpy(type, packet + 20, 2);
+   unsigned char type[2];
+   memcpy(type, packet + 20, 2);
 
-      struct data_registry *new_reg;
-      new_reg = (struct data_registry *) malloc (sizeof(struct data_registry));
-      new_reg->header = new_header;
-      new_reg->tlength = new_header->length;
-      process_arp_header(new_reg, packet);
+   struct data_registry *new_reg;
+   new_reg = (struct data_registry *) malloc (sizeof(struct data_registry));
+   new_reg->header = new_header;
+   new_reg->tlength = new_header->length;
+   process_arp_header(new_reg, packet);
 
-      /* Check if its ARP request or reply, and add it to list */
-      if (memcmp(type, ARP_REPLY, 2) == 0) {
-         new_reg->type = 2;             /* Arp Type */
-         pthread_mutex_lock(data_access);
-         _data_reply.add_registry(new_reg);
-         pthread_mutex_unlock(data_access);
+   /* Check if its ARP request or reply, and add it to list */
+   if (memcmp(type, ARP_REPLY, 2) == 0) {
+     new_reg->type = 2;             /* Arp Type */
+     pthread_mutex_lock(data_access);
+     _data_reply.add_registry(new_reg);
+     pthread_mutex_unlock(data_access);
 
-      } else if (memcmp(type, ARP_REQUEST, 2) == 0) {
-         new_reg->type = 1;             /* Arp Type */
-         pthread_mutex_lock(data_access);
-         _data_request.add_registry(new_reg);
-         pthread_mutex_unlock(data_access);
+   } else if (memcmp(type, ARP_REQUEST, 2) == 0) {
+     new_reg->type = 1;             /* Arp Type */
+     pthread_mutex_lock(data_access);
+     _data_request.add_registry(new_reg);
+     pthread_mutex_unlock(data_access);
 
-      } else {
-         free(new_header);
-         free(new_reg->sip);
-         free(new_reg->dip);
-         free(new_reg);
-      }
-    }
+   } else {
+     free(new_header);
+     free(new_reg->sip);
+     free(new_reg->dip);
+     free(new_reg);
+   }
 }
 
 /* Handle arp packet header */
