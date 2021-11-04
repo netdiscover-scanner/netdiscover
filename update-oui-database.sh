@@ -29,7 +29,7 @@ VERSION=0.2
 
 # CHANGELOG
 #
-# v0.1, 2020-06-29, Eriberto
+# v0.2, 2020-06-29, Eriberto
 #
 # * Drop 'sed -z' to execute in macOS.
 # * Drop not needed PATH variable, also for macOS.
