@@ -25,6 +25,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+set -o nounset
+
 VERSION=0.2
 
 # CHANGELOG
@@ -45,13 +47,13 @@ VERSION=0.2
 
 DATE=$(date +%F | tr -d "-")
 DATE2=$(date +%F)
-NAME=oui.txt-$DATE
+NAME="oui.txt-${DATE}"
 OUIFILE=src/oui.h
 
 # Minimum amount of MAC addresses for check.
-# To calculate, use "cat `oui_file` | grep "base 16" | wc -l"
-# Last definition on 2016-04-13.
-MINIMUM_MAC=21900
+# To calculate, use "grep -c "base 16" `oui_file`"
+# Last definition on 2021-11-01.
+MINIMUM_MAC=30900
 
 # The original URL[1] redirects to this URL[2].
 # [1] http://standards.ieee.org/develop/regauth/oui/oui.txt
@@ -63,7 +65,7 @@ URL=http://standards-oui.ieee.org/oui/oui.txt
 # Help and version #
 ####################
 
-if [ "$1" = "--help" ]
+if [ "${1:-}" = "--help" ]
 then
     printf "\nupdate-oui-database-ng.sh\n\n"
     printf "Usage: ./update-oui-database-ng.sh [OPTIONS]\n\n"
@@ -73,10 +75,10 @@ then
     exit 0
 fi
 
-if [ "$1" = "--version" ]
+if [ "${1:-}" = "--version" ]
 then
     printf "\nupdate-oui-database-ng.sh\n\n"
-    printf "Version $VERSION\n\n"
+    printf "Version %s\n\n" "${VERSION}"
     exit 0
 fi
 
@@ -96,54 +98,54 @@ dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to
 
 DOWN=0
 
-if [ "$1" = "--no-download" ]; then DOWN=no; fi
+if [ "${1:-}" = "--no-download" ]; then DOWN=no; fi
 
-if [ "$DOWN" = "0" ]; then axel -V > /dev/null 2> /dev/null && DOWN="axel -ao $NAME"; fi
-if [ "$DOWN" = "0" ]; then curl -V > /dev/null 2> /dev/null && DOWN="curl -Lo $NAME"; fi
-if [ "$DOWN" = "0" ]; then wget -V > /dev/null 2> /dev/null && DOWN="wget -O $NAME"; fi
-if [ "$DOWN" = "0" ]; then printf "\nYou need axel (faster!), wget or curl to use this script.\n\n" && exit 1; fi
+if [ "${DOWN}" = "0" ]; then axel -V > /dev/null 2> /dev/null && DOWN="axel -ao ${NAME}"; fi
+if [ "${DOWN}" = "0" ]; then curl -V > /dev/null 2> /dev/null && DOWN="curl -Lo ${NAME}"; fi
+if [ "${DOWN}" = "0" ]; then wget -V > /dev/null 2> /dev/null && DOWN="wget -O ${NAME}"; fi
+if [ "${DOWN}" = "0" ]; then printf "\nYou need axel (faster!), wget or curl to use this script.\n\n" && exit 1; fi
 
 # Download the oui.txt
 
-if [ -f "$NAME" ] && [ "$DOWN" != "no" ]
+if [ -f "${NAME}" ] && [ "${DOWN}" != "no" ]
 then
-    printf "\nThe file $NAME already exists. To run this script, remove $NAME or use --no-download option.\n\n"
+    printf "\nThe file %s already exists. To run this script, remove %s or use --no-download option.\n\n" "${NAME}" "${NAME}"
     exit 0
-elif [ ! -f "$NAME" ] && [ "$DOWN" = "no" ]
+elif [ ! -f "${NAME}" ] && [ "${DOWN}" = "no" ]
 then
-    printf "\nThe file $NAME is missing. To download it, does not use --no-download option.\n\n"
+    printf "\nThe file %s is missing. To download it, does not use --no-download option.\n\n" "${NAME}"
     exit 0
-elif [ "$DOWN" != "no" ]
+elif [ "${DOWN}" != "no" ]
 then
-    printf "\n\nDownloading oui.txt from $URL\n"
-    printf "Downloader to be used: $(echo $DOWN | cut -d" " -f1)\n\n"
-    $DOWN $URL
+    printf "\n\nDownloading oui.txt from %s\n" "${URL}"
+    printf "Downloader to be used: %s\n\n" "$(echo "${DOWN}" | cut -d" " -f1)"
+    ${DOWN} "${URL}"
 fi
 
 # Final check and conversion to Unix
 
-TOTAL_MAC=$(cat $NAME | grep "base 16" | wc -l)
+TOTAL_MAC=$(grep -c "base 16" "${NAME}")
 
-if [ "$TOTAL_MAC" -lt "$MINIMUM_MAC" ]
+if [ "${TOTAL_MAC}" -lt "${MINIMUM_MAC}" ]
 then
-    printf "\nThe file $NAME seems to be corrupted. There are $TOTAL_MAC MAC addresses. However, over the $MINIMUM_MAC were expected.\n\n"
+    printf "\nThe file %s seems to be corrupted. There are %s addresses. However, over the %s were expected.\n\n" "${NAME}" "${TOTAL_MAC}" "${MINIMUM_MAC}"
     exit 0
 fi
 
-dos2unix -q $NAME
+dos2unix -q "${NAME}"
 
 
 ######################
 # Building src/oui.h #
 ######################
 
-printf "\n\nBuilding the $OUIFILE.\n"
+printf "\n\nBuilding the %s.\n" "${OUIFILE}"
 
 # The header
 
-cat << EOT > $OUIFILE
+cat << EOT > "${OUIFILE}"
 /*
- * Organizationally Unique Identifier list downloaded on $DATE2
+ * Organizationally Unique Identifier list downloaded on ${DATE2}
  * Automatically generated from http://standards.ieee.org/develop/regauth/oui/oui.txt
  * For Netdiscover by Jaime Penalba
  *
@@ -159,22 +161,22 @@ EOT
 
 # The MACs
 
-cat $NAME | grep "base 16" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' | \
+grep "base 16" "${NAME}" | tr '\t' ' ' | tr -s " " | sed 's/(base 16) //' | \
   grep '[0-9A-F]' |  sort | sed 's/ /", "/' | sed 's/^/    { "/' | \
-  tr '\n' '#' | sed 's/#/" },#/g' | tr '#' '\n' >> $OUIFILE
+  tr '\n' '#' | sed 's/#/" },#/g' | tr '#' '\n' >> "${OUIFILE}"
 
 # Total of MACs
 
-TOTALMAC=$(cat $OUIFILE | egrep "{ .[0-9A-F]" | wc -l)
+TOTALMAC=$(grep -cE "{ .[0-9A-F]" "${OUIFILE}")
 
 # The tail
 
-cat << EOT >> $OUIFILE
+cat << EOT >> "${OUIFILE}"
     { NULL, NULL }
 };
 
-// Total $TOTALMAC items.
+// Total ${TOTALMAC} items.
 EOT
 
-printf "Done. $OUIFILE has $TOTALMAC MAC addresses.\n"
+printf "Done. %s has %s MAC addresses.\n" "${OUIFILE}" "${TOTALMAC}"
 # END
