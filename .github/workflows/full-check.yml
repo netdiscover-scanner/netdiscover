@@ -27,9 +27,12 @@ jobs:
            ./configure
            make
            sudo make install
-    - name: run_program
+    - name: run_program_version
       run: |
            sudo netdiscover -h 2>&1 | egrep -i Netdiscover -A 30
+    - name: run_program_scan
+      run: |
+           sudo netdiscover -P -r 127.0.0.0/16
     - name: check_version
       run: |
            VERC=$(cat configure.ac | grep AC_INIT | cut -d"," -f2 | egrep -o '[0-9.]+')
