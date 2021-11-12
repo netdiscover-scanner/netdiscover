@@ -32,7 +32,7 @@ jobs:
            sudo netdiscover -h 2>&1 | egrep -i Netdiscover -A 30
     - name: run_program_scan
       run: |
-           sudo netdiscover -P -r 192.168.163.0/24
+           sudo netdiscover -P -r 127.0.0.0/16
     - name: check_version
       run: |
            VERC=$(cat configure.ac | grep AC_INIT | cut -d"," -f2 | egrep -o '[0-9.]+')
