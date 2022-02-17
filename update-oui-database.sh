@@ -3,7 +3,7 @@
 # update-oui-database.sh
 # This script creates the src/oui.h file needed by netdiscover.
 #
-# Copyright 2016-2021 Joao Eriberto Mota Filho <eriberto@debian.org>
+# Copyright 2016-2022 Joao Eriberto Mota Filho <eriberto@debian.org>
 # This file is under GPL-2+ license.
 #
 # netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>
@@ -25,9 +25,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-VERSION=0.3
+VERSION=0.4
 
 # CHANGELOG
+#
+# v0.4, 2022-02-16, Eriberto
+#
+# * Add --insecure option to download from
+#   http://standards-oui.ieee.org/oui/oui.txt. (Fix #15, again)
 #
 # v0.3, 2021-11-11, Eriberto
 #
@@ -53,7 +58,8 @@ DATE2=$(date +%F)
 NAME=oui.txt-$DATE
 OUIFILE=src/oui.h
 
-# Minimum amount of MAC addresses for check.
+# Minimum amount of MAC addresses for check. Is not needed to update this every
+# time. The main goal is check if a generated file was corrupted.
 # To calculate, use "cat `oui_file` | grep "base 16" | wc -l"
 # Last definition on 2021-11-11.
 MINIMUM_MAC=30500
@@ -61,22 +67,27 @@ MINIMUM_MAC=30500
 # URL to download
 URL=https://linuxnet.ca/ieee/oui.txt.gz
 
+# Insecure URL
+IURL=http://standards-oui.ieee.org/oui/oui.txt
 
 ####################
 # Help and version #
 ####################
 
-if [ "$1" = "--help" ]
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]
 then
     printf "\nupdate-oui-database.sh $VERSION\n\n"
     printf "Usage: ./update-oui-database.sh [OPTIONS]\n\n"
-    printf "  --help          Show this help.\n"
-    printf "  --no-download   Do not download the oui.txt to use an existent version.\n"
-    printf "  --version       Show version.\n"
+    printf "  --no-download   Do not download the oui.txt. Use an already downloaded version.\n"
+    printf "  --insecure      Use an insecure address, started with http, instead of https.\n"
+    printf "  --help, -h      Show this help.\n"
+    printf "  --version, -v   Show version.\n\n"
+    printf "Default download:  $URL\n"
+    printf "Insecure download: $IURL\n"
     exit 0
 fi
 
-if [ "$1" = "--version" ]
+if [ "$1" = "--version" ] || [ "$1" = "-v" ]
 then
     printf "\nupdate-oui-database.sh\n\n"
     printf "Version $VERSION\n\n"
@@ -89,7 +100,13 @@ fi
 ######################
 
 # Not needed for linuxnet.ca
-# dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to use this script.\n\n"; exit 1; }
+if [ "$1" = "--insecure" ]
+then
+    dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to use this script.\n\n"; exit 1; }
+
+    # Redefining $URL to use insecure
+    URL="$IURL"
+fi
 
 ##################
 # Check for gzip #
@@ -101,15 +118,22 @@ gzip -V > /dev/null 2> /dev/null || { printf "\nYou need gzip command to use thi
 # OUI.txt download #
 ####################
 
+# Check if .gz is present
+
+URLEND=${URL: -3}
+GZ=""
+
+if [ "$URLEND" = ".gz" ]; then GZ=".gz"; fi
+
 # Search for downloaders
 
 DOWN=0
 
 if [ "$1" = "--no-download" ]; then DOWN=no; fi
 
-if [ "$DOWN" = "0" ]; then axel -V > /dev/null 2> /dev/null && DOWN="axel -ao ${NAME}.gz"; fi
-if [ "$DOWN" = "0" ]; then curl -V > /dev/null 2> /dev/null && DOWN="curl -Lo ${NAME}.gz"; fi
-if [ "$DOWN" = "0" ]; then wget -V > /dev/null 2> /dev/null && DOWN="wget -O ${NAME}.gz"; fi
+if [ "$DOWN" = "0" ]; then axel -V > /dev/null 2> /dev/null && DOWN="axel -ao ${NAME}${GZ}"; fi
+if [ "$DOWN" = "0" ]; then curl -V > /dev/null 2> /dev/null && DOWN="curl -Lo ${NAME}${GZ}"; fi
+if [ "$DOWN" = "0" ]; then wget -V > /dev/null 2> /dev/null && DOWN="wget -O ${NAME}${GZ}"; fi
 if [ "$DOWN" = "0" ]; then printf "\nYou need axel (faster!), wget or curl to use this script.\n\n" && exit 1; fi
 
 # Download the oui.txt
@@ -131,7 +155,11 @@ fi
 
 # Unzip if needed
 
-if [ -f "${NAME}.gz" ]; then gunzip "${NAME}.gz"; fi
+if [ -f "${NAME}.gz" ]
+then
+    echo "Found ${NAME}.gz. Unpacking..."
+    gunzip "${NAME}.gz"
+fi
 
 # Final check and conversion to Unix (if needed)
 
@@ -139,12 +167,15 @@ TOTAL_MAC=$(cat $NAME | grep "base 16" | wc -l)
 
 if [ "$TOTAL_MAC" -lt "$MINIMUM_MAC" ]
 then
-    printf "\nThe file $NAME seems to be corrupted. There are $TOTAL_MAC MAC addresses. However, over the $MINIMUM_MAC were expected.\n\n"
+    printf "\nThe file $NAME seems to be corrupted. There are $TOTAL_MAC MAC addresses. However, over the $MINIMUM_MAC addresses were expected.\n\n"
     exit 1
 fi
 
 # Not needed for linuxnet.ca
-# dos2unix -q $NAME
+if [ "$1" = "--insecure" ]
+then
+    dos2unix -q $NAME
+fi
 
 
 ######################
