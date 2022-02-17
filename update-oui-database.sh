@@ -29,7 +29,7 @@ VERSION=0.4
 
 # CHANGELOG
 #
-# v0.4, 2022-02-16, Eriberto
+# v0.4, 2022-02-17, Eriberto
 #
 # * Add --insecure option to download from
 #   http://standards-oui.ieee.org/oui/oui.txt. (Fix #15, again)
@@ -82,8 +82,9 @@ then
     printf "  --insecure      Use an insecure address, started with http, instead of https.\n"
     printf "  --help, -h      Show this help.\n"
     printf "  --version, -v   Show version.\n\n"
-    printf "Default download:  $URL\n"
-    printf "Insecure download: $IURL\n"
+    printf "If running without options, the program will download the oui.txt file from\ndefault place.\n\n"
+    printf "Default place:  $URL\n"
+    printf "Insecure place: $IURL\n"
     exit 0
 fi
 
