@@ -1,0 +1,27 @@
+name: check-update-oui.yml
+
+on: [push, pull_request]
+    paths:
+      - "update-oui-database.sh"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_dependencies
+      run: sudo apt install axel dos2unix
+    - name: test_oui_secure
+      run: |
+           rm -f oui.txt-20* src/oui.h
+           ./update-oui-database.sh
+           COUNT=$(cat src/oui.h | wc -l)
+           if [ "$COUNT" -lt 30000 ]; then { echo "Invalid src/oui.h"; exit 1; }; fi
+    - name: test_oui_insecure
+      run: |
+           rm -f oui.txt-20* src/oui.h
+           ./update-oui-database.sh --insecure
+           COUNT=$(cat src/oui.h | wc -l)
+           if [ "$COUNT" -lt 30000 ]; then { echo "Invalid src/oui.h"; exit 1; }; fi
