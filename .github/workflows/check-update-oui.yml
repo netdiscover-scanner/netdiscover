@@ -1,9 +1,13 @@
 name: check-update-oui.yml
 
-on: [push, pull_request]
+on:
+  push:
     paths:
       - "update-oui-database.sh"
-
+  pull_request:
+    paths:
+      - "update-oui-database.sh"
+      
 jobs:
   build:
 
