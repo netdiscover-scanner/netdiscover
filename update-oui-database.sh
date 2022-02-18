@@ -83,7 +83,7 @@ then
     printf "  --help, -h      Show this help.\n"
     printf "  --version, -v   Show version.\n\n"
     printf "Default download:  $URL\n"
-    printf "Insecure download: $IURL\n"
+    printf "Insecure download: $IURL\n\n"
     exit 0
 fi
 
