@@ -3,9 +3,11 @@ name: check-update-oui.yml
 on:
   push:
     paths:
+      - "configure.ac"
       - "update-oui-database.sh"
   pull_request:
     paths:
+      - "configure.ac"
       - "update-oui-database.sh"
 
 jobs:
