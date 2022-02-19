@@ -29,7 +29,7 @@ VERSION=0.4
 
 # CHANGELOG
 #
-# v0.4, 2022-02-16, Eriberto
+# v0.4, 2022-02-17, Eriberto
 #
 # * Add --insecure option to download from
 #   http://standards-oui.ieee.org/oui/oui.txt. (Fix #15, again)
