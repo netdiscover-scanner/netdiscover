@@ -1,7 +1,9 @@
 # against of error: Makefile.am:3: `doc_DATA' is used but `docdir' is undefined
 docdir = @docdir@
 
-SUBDIRS = src doc
+SUBDIRS = src
+
+man_MANS= doc/netdiscover.8
 
 doc_DATA = \
         README.md\
@@ -14,6 +16,7 @@ doc_DATA = \
 EXTRA_DIST = \
 	autogen.sh \
 	doc/create-man.sh \
+	doc/netdiscover.8 \
 	doc/netdiscover.txt \
 	README.md \
 	README.rpm \

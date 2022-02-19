@@ -9,7 +9,7 @@ AC_CHECK_HEADER(pcap.h,,
         AC_MSG_ERROR(Cannot find pcap.h - You need libpcap installed.))
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([Makefile src/Makefile doc/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT
 
 printf "\nRun ./update-oui-database.sh if you want a updated MAC vendors database.\n\n"
