@@ -12,6 +12,11 @@ doc_DATA = \
         TODO
 
 EXTRA_DIST = \
+	autogen.sh \
+	doc/create-man.sh \
+	doc/netdiscover.txt \
+	README.md \
+	README.rpm \
 	rpm/mandriva.spec \
 	rpm/redhat.spec \
 	update-oui-database.sh
