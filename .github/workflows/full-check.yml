@@ -43,3 +43,21 @@ jobs:
               echo "Wrong version. configure.ac says $VERC, but netdiscover says $VERP"
               exit 1
            fi
+    - name: test_make_dist
+      run: |
+           make distclean
+           ./autogen.sh
+           ./configure
+           make dist
+           mkdir test_dist
+           mv netdiscover-*.tar.gz test_dist
+           cd test_dist
+           tar -xvf netdiscover-*.tar.gz
+           rm -f netdiscover-*.tar.gz
+           cd netdiscover-*
+           ./autogen.sh
+           ./configure
+           make
+           sudo make install
+           sudo make uninstall
+           make distclean
