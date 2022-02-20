@@ -15,9 +15,9 @@ txt2man -d "$T2M_DATE" -t $T2M_NAME -r $T2M_NAME-$T2M_VERSION -s $T2M_LEVEL -v "
 }
 #--------------------------------------------------------
 
-T2M_DATE="01 Nov 2021"
+T2M_DATE="19 Feb 2022"
 T2M_NAME=netdiscover
-T2M_VERSION=0.8.1
+T2M_VERSION=0.9
 T2M_LEVEL=8
 T2M_DESC="active/passive ARP reconnaissance tool"
 create-man
