@@ -10,9 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install_dependencies
-      run: sudo apt install axel dos2unix libnet1-dev libpcap-dev
-    - name: updated_oui
-      run: ./update-oui-database.sh
+      run: sudo apt install libnet1-dev libpcap-dev
     - name: first_build
       run: |
            ./autogen.sh
