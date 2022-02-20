@@ -1,3 +1,17 @@
+Netdiscover 0.9 - 19 Feb. 2022
+   * ifaces: process_packet: Return if source MAC address matches host MAC.
+     Thanks to bcoles <bcoles@gmail.com>.
+   * Using a secure URL for OUI download and added the option --insecure to
+     download from IEEE (insecure).
+   * Fixed 'make dist' process.
+   * Moved manpage install from doc/Makefile.am to Makefile.am.
+   * GitHub CI:
+       - Added a final command test.
+       - Added a test for 'make dist'.
+       - Test if the program version is right.
+       - Created a new CI to test download via secure and insecure modes.
+   * Updated OUI table.
+
 Netdiscover 0.8.1 - 01 Nov. 2021
    * Migrated README to README.md.
    * Replaced deprecated function pcap_lookupdev() with pcap_findalldevs().
