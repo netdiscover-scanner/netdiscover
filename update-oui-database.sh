@@ -65,7 +65,7 @@ OUIFILE=src/oui.h
 MINIMUM_MAC=30500
 
 # URL to download
-URL=https://linuxnet.ca/ieee/oui.txt.gz
+URL=https://standards-oui.ieee.org/oui/oui.txt
 
 # Insecure URL
 IURL=http://standards-oui.ieee.org/oui/oui.txt
@@ -100,7 +100,7 @@ fi
 # Check for dos2unix #
 ######################
 
-# Not needed for linuxnet.ca
+# Insecure for Legacy Purposes 
 if [ "$1" = "--insecure" ]
 then
     dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to use this script.\n\n"; exit 1; }
@@ -172,7 +172,7 @@ then
     exit 1
 fi
 
-# Not needed for linuxnet.ca
+# insecure for legacy purposes
 if [ "$1" = "--insecure" ]
 then
     dos2unix -q $NAME
