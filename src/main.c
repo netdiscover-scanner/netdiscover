@@ -254,24 +254,41 @@ int main(int argc, char **argv)
       pcap_freealldevs(devices);
    }
 
+   /* Check whether user config files are either disabled or can be found */
+   if ((flag_ignore_files != 1) && (home = getenv("HOME")) == NULL)
+   {
+      printf("Couldn't figure out users home path (~). Please set the $HOME "
+         "environment variable or specify -d to disable user configuration files.\n");
+      exit(1);
+   }
+
    /* Load user config files or set defaults */
-   home = getenv("HOME");
+   if (flag_ignore_files != 1)
+   {
+   
+      /* Read user configured ranges */
+      path = (char *) malloc (sizeof(char) * (strlen(home) + strlen(RPATH) + 1));
+      sprintf(path, RPATH, home);
 
-   /* Read user configured ranges if arent disabled */
-   path = (char *) malloc (sizeof(char) * (strlen(home) + strlen(RPATH) + 1));
-   sprintf(path, RPATH, home);
+      if ((common_net = fread_list(path)) == NULL)
+         common_net = dcommon_net;
+      free(path);
 
-   if (((common_net = fread_list(path)) == NULL) || (flag_ignore_files == 1))
+      /* Read user configured ips */
+      path = (char *) malloc (sizeof(char) * (strlen(home) + strlen(FPATH) + 1));
+      sprintf(path, FPATH, home);
+
+      if((fast_ips = fread_list(path)) == NULL)
+         fast_ips = dfast_ips;
+      free(path);
+      
+   } else {
+   
+      /* Set defaults */
       common_net = dcommon_net;
-   free(path);
-
-   /* Read user configured ips for fast mode if arent disabled */
-   path = (char *) malloc (sizeof(char) * (strlen(home) + strlen(FPATH) + 1));
-   sprintf(path, FPATH, home);
-
-   if(((fast_ips = fread_list(path)) == NULL) || (flag_ignore_files == 1))
       fast_ips = dfast_ips;
-   free(path);
+      
+   }
 
    /* Read range list given by user if specified */
    if (flag_scan_list == 1) {
