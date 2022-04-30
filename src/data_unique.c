@@ -65,7 +65,7 @@ void unique_next_registry(void) { current_unique = current_unique->next; }
 struct data_registry *unique_current_unique(void) { return current_unique; }
 
 /* Return hosts count */
-int unique_hosts_count(void) { return unique_count.hosts; }
+unsigned int unique_hosts_count(void) { return unique_count.hosts; }
 
 
 /* Print current registry line (for interactive mode) */
