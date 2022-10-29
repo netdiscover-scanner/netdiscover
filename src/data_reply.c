@@ -64,7 +64,7 @@ void reply_next_registry(void) { current_reply = current_reply->next; }
 struct data_registry *reply_current_reply(void) { return current_reply; }
 
 /* Return hosts count */
-int reply_hosts_count(void) { return reply_count.hosts; }
+unsigned int reply_hosts_count(void) { return reply_count.hosts; }
 
 
 

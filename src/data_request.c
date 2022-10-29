@@ -64,7 +64,7 @@ void request_next_registry(void) { request_current = request_current->next; }
 struct data_registry *request_current_registry(void) {return request_current;}
 
 /* Return hosts count */
-int request_hosts_count(void) { return request_count.hosts; }
+unsigned int request_hosts_count(void) { return request_count.hosts; }
 
 
 /* Print current registry line (for interactive mode) */
