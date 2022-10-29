@@ -1,3 +1,13 @@
+Netdiscover 0.10 - 29 Oct. 2022
+   * Changed secure download site from https://linuxnet.ca/ieee/oui.txt
+     (link down) to https://standards-oui.ieee.org in update-oui-database.sh
+     script.
+   * Fixed segfault when HOME env is not set. Thanks to Till Zimmermann
+     <tzimmermann@uos.de>.
+   * Use unsigned int for data_counter.hosts. Thanks to Brendan Coles
+     <bcoles@gmail.com>
+   * Updated OUI table.
+
 Netdiscover 0.9 - 19 Feb. 2022
    * ifaces: process_packet: Return if source MAC address matches host MAC.
      Thanks to bcoles <bcoles@gmail.com>.
