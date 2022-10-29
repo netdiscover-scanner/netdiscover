@@ -7,7 +7,8 @@
  *  Copyright 2007-2008 Gustavo Chain
  *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
  *  Copyright 2019-2021 Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
- *  Copyright 2021      bcoles <bcoles@gmail.com>
+ *  Copyright 2021      Brendan Coles <bcoles@gmail.com>
+ *  Copyright 2022      Till Zimmermann <tzimmermann@uos.de>
  *
  ****************************************************************************/
 

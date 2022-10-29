@@ -4,6 +4,7 @@
  *  Sat Apr  5 09:36:32 CEST 2008
  *  Copyright 2008-2016 Jaime Penalba Estebanez <jpenalbae@gmail.com>
  *  Copyright 2009      Janusz Uzycki <j.uzycki@elproma.com.pl>
+ *  Copyright 2022      Brendan Coles <bcoles@gmail.com>
  *
  *  Data abstraction layer part for unique hosts
  ****************************************************************************/
