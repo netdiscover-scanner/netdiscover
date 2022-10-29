@@ -25,9 +25,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-VERSION=0.4
+VERSION=0.5
 
 # CHANGELOG
+#
+# v0.5, 2022-10-29, Eriberto
+#
+# Change main download site from https://linuxnet.ca/ieee/oui.txt (link down)
+# to https://standards-oui.ieee.org. (Fix #23)
 #
 # v0.4, 2022-02-17, Eriberto
 #
@@ -65,7 +70,7 @@ OUIFILE=src/oui.h
 MINIMUM_MAC=30500
 
 # URL to download
-URL=https://linuxnet.ca/ieee/oui.txt.gz
+URL=https://standards-oui.ieee.org
 
 # Insecure URL
 IURL=http://standards-oui.ieee.org/oui/oui.txt
@@ -100,11 +105,15 @@ fi
 # Check for dos2unix #
 ######################
 
-# Not needed for linuxnet.ca
+dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to use this script.\n\n"; exit 1; }
+
+######################
+# Check for insecure #
+######################
+
+# Not needed for https://standards-oui.ieee.org/
 if [ "$1" = "--insecure" ]
 then
-    dos2unix -V > /dev/null 2> /dev/null || { printf "\nYou need dos2unix command to use this script.\n\n"; exit 1; }
-
     # Redefining $URL to use insecure
     URL="$IURL"
 fi
@@ -162,7 +171,7 @@ then
     gunzip "${NAME}.gz"
 fi
 
-# Final check and conversion to Unix (if needed)
+# Final check and conversion to Unix
 
 TOTAL_MAC=$(cat $NAME | grep "base 16" | wc -l)
 
@@ -172,12 +181,7 @@ then
     exit 1
 fi
 
-# Not needed for linuxnet.ca
-if [ "$1" = "--insecure" ]
-then
-    dos2unix -q $NAME
-fi
-
+dos2unix -q $NAME
 
 ######################
 # Building src/oui.h #
