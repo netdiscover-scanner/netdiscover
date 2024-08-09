@@ -114,6 +114,7 @@ int main(int argc, char **argv)
    int flag_passive_mode = 0;
    int flag_scan_range = 0;
    int flag_scan_list = 0;
+   int flag_assume_root = 0;
    int no_parsable_header = 0;
    char *plist = NULL;
    char *mlist = NULL;
@@ -140,7 +141,7 @@ int main(int argc, char **argv)
    sprintf(current_network, "Starting.");
 
    /* Fetch parameters */
-   while ((c = getopt(argc, argv, "i:s:r:l:m:n:c:F:pSfdPNLh")) != EOF)
+   while ((c = getopt(argc, argv, "i:s:r:l:m:n:c:F:pRSfdPNLh")) != EOF)
    {
       switch (c)
       {
@@ -173,6 +174,10 @@ int main(int argc, char **argv)
             datos.source_ip = (char *) malloc (sizeof(char) * strlen(optarg) + 1);
             sprintf(datos.source_ip, "%s", optarg);
             flag_scan_range = 1;
+            break;
+
+         case 'R': /* Assume user has the required capabilities (Don't run any checks) */
+            flag_assume_root = 1;
             break;
 
          case 'l':   /* Scan ranges on the given file */
@@ -230,10 +235,12 @@ int main(int argc, char **argv)
 
 
    /* Check for uid 0 */
-   if ( getuid() && geteuid() )
-   {
-      printf("You must be root to run this.\n");
-      exit(1);
+   if(!flag_assume_root) {
+     if ( getuid() && geteuid() )
+     {
+        printf("You must be root to run this.\n");
+        exit(1);
+     }
    }
 
    /* If no iface was specified, autoselect one. exit, if no one available */
@@ -560,6 +567,7 @@ void usage(char *comando)
       "  -c count: number of times to send each ARP request (for nets with packet loss)\n"
       "  -n node: last source IP octet used for scanning (from 2 to 253)\n"
       "  -d ignore home config files for autoscan and fast mode\n"
+      "  -R assume user is root or has the required capabilities without running any checks\n"
       "  -f enable fastmode scan, saves a lot of time, recommended for auto\n"
       "  -P print results in a format suitable for parsing by another program and stop after active scan\n"
       "  -L similar to -P but continue listening after the active scan is completed\n"
