@@ -1,5 +1,5 @@
 *******************************************************************************
-                          AUTHORS & CONTRIBUTORS
+                                  AUTHORS
 *******************************************************************************
 
 If you have any suggestion or bugs, file a bug here[1].
@@ -21,14 +21,3 @@ For historical reasons, the old homepages for this project are listed below:
 - http://www.nixgeneration.com/~jaime/netdiscover/
 - https://sourceforge.net/projects/netdiscover/
 
-
-Contributors
-============
-
-Netdiscover includes the following contributions:
-
- - Debian packages and manual page by "Nicolas Weyland <ufoalien@weyland.ch>"
- - First parsable output attempt by "Marcel van der Boom <marcel@hsdev.com>"
- - Parsable output patch by "Guillaume Pratte <guillaume@guillaumepratte.net>"
- - Known hosts list feature by "Janusz Uzycki <j.uzycki@elproma.com.pl>"
- - Fix for undefined docdir by "Janusz Uzycki <j.uzycki@elproma.com.pl>"
