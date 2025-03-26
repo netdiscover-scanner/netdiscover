@@ -5,14 +5,6 @@ SUBDIRS = src
 
 man_MANS= doc/netdiscover.8
 
-doc_DATA = \
-        README.md\
-        COPYING\
-        AUTHORS\
-        ChangeLog\
-        NEWS\
-        TODO
-
 EXTRA_DIST = \
 	autogen.sh \
 	doc/create-man.sh \
