@@ -9,6 +9,7 @@
  *  Copyright 2019-2021 Joao Eriberto Mota Filho <eriberto@eriberto.pro.br>
  *  Copyright 2021      Brendan Coles <bcoles@gmail.com>
  *  Copyright 2022      Till Zimmermann <tzimmermann@uos.de>
+ *  Copyright 2024      VBrawl <konstantosjim@gmail.com>
  *
  ****************************************************************************/
 
