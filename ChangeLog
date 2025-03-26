@@ -1,3 +1,11 @@
+Netdiscover 0.11 - 26 Mar. 2025
+   * Added -R option to assume user is root or that he has the required
+     capabilities without running any checks. Thanks to VBrawl
+     <konstantosjim@gmail.com>.
+   * No longer install extra documents. Extra docs like AUTHORS and TODO must
+     remain in source code only. Commonly, other projects don't install them.
+   * Updated OUI table.
+
 Netdiscover 0.10 - 29 Oct. 2022
    * Changed secure download site from https://linuxnet.ca/ieee/oui.txt
      (link down) to https://standards-oui.ieee.org in update-oui-database.sh
