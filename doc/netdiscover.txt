@@ -38,6 +38,8 @@ OPTIONS
   -d         Ignore configuration files at home dir (for autoscan and fast mode
              only). This will use default ranges and IPs for autoscan and fast
              mode. See below for information about configuration files.
+  -R         Assume user is root or that he has the required capabilities
+             without running any checks.
   -f         Enable fast mode scan. This will only scan for .1, .100 and .254
              on each network. This mode is useful while searching for ranges
              being used. After you found such range you can make a specific
