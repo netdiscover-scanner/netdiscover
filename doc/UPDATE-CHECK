@@ -9,3 +9,4 @@ When updating, change the following files (if needed):
 - src/oui.h (refresh via update-oui-database.sh)
 - configure.ac (VERSION)
 - Test in Debian Sid.
+- Generate extra tarballs via 'make dist' and upload to GitHub
