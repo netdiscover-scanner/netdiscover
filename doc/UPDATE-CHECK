@@ -1,6 +1,6 @@
 When updating, change the following files (if needed):
 
-- AUTHORS
+- Add rights for contributors (copyright)
 - ChangeLog
 - Check for spelling errors in ChangeLog and manpage.
 - doc/create-man.sh (DATE, version)
