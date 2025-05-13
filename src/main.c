@@ -28,7 +28,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #define _GNU_SOURCE
 
 #include <stdio.h>
@@ -54,7 +54,7 @@ void *inject_arp(void *arg);
 void *screen_refresh(void *arg);
 void *parsable_screen_refresh(void *arg);
 void scan_range(char *disp, char *sip);
-void usage();
+void usage(char *commando);
 
 
 /* Last octect of ips scaned in fast mode */
@@ -274,7 +274,7 @@ int main(int argc, char **argv)
    /* Load user config files or set defaults */
    if (flag_ignore_files != 1)
    {
-   
+
       /* Read user configured ranges */
       path = (char *) malloc (sizeof(char) * (strlen(home) + strlen(RPATH) + 1));
       sprintf(path, RPATH, home);
@@ -290,13 +290,13 @@ int main(int argc, char **argv)
       if((fast_ips = fread_list(path)) == NULL)
          fast_ips = dfast_ips;
       free(path);
-      
+
    } else {
-   
+
       /* Set defaults */
       common_net = dcommon_net;
       fast_ips = dfast_ips;
-      
+
    }
 
    /* Read range list given by user if specified */
