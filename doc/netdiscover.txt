@@ -19,9 +19,11 @@ DESCRIPTION
 OPTIONS
   -i device  The network interface to sniff and inject packets. If no interface
              is specified, first available will be used.
-  -r range   Scan a given range instead of auto scan. Valid range values area
-             for example: 192.168.0.0/24, 192.168.0.0/16 or 192.168.0.0/8.
-             Currently, acceptable ranges are /8, /16 and /24 only.
+  -r range   Scan a given range instead of auto scan. Valid range values include,
+             for example: 192.168.0.0/24, 192.168.2.0/23, 192.168.0.0/12,
+             192.168.0.0/8. Note that netdiscover is also a passive scanner, and
+             all detected IPs will be displayed, in addition to those included in
+             the specified range.
   -l file    Scan ranges contained on the given file. It must contain only one
              range per line.
   -p         Enable passive mode. In passive mode, netdiscover does not send
@@ -92,8 +94,8 @@ CONFIG FILES
   Example:
 
     192.168.21.0/24
-    172.26.0.0/16
-    10.0.0.0/8
+    172.24.0.0/14
+    10.0.0.0/12
 
   ~/.netdiscover/fastips  
           List containing the last octet of the IPs to be scanned on each
