@@ -39,6 +39,9 @@
 #include <signal.h>
 #include <string.h>
 
+#include <stdint.h>
+#include <arpa/inet.h>
+
 #include "ifaces.h"
 #include "screen.h"
 #include "fhandle.h"
@@ -105,6 +108,20 @@ void *keys_thread(void *arg)
 {
    while ( 1 == 1 )
       read_key();
+}
+
+// Convert IP string to uint32_t
+uint32_t ip_to_int(const char *ip) {
+    struct in_addr addr;
+    inet_aton(ip, &addr);
+    return ntohl(addr.s_addr);
+}
+
+// Convert uint32_t to IP string
+void int_to_ip(uint32_t ip, char *buf) {
+    struct in_addr addr;
+    addr.s_addr = htonl(ip);
+    strcpy(buf, inet_ntoa(addr));
 }
 
 
@@ -473,83 +490,69 @@ void scan_net(char *disp, char *sip)
    }
 }
 
-
 /* Scan range, using arp requests */
-void scan_range(char *disp, char *sip)
+void scan_range(char *disp, char *cidr)
 {
-   int i, k, e;
-   const char delimiters[] = ".,/";
-   char *a, *b, *c, *d, *aux;
-   char tnet[19], net[16];
+    char ip_str[20], *slash;
+    int prefix;
+    uint32_t ip, netmask, network, broadcast, start_ip, end_ip;
+    char target_ip[16], fromip[16];
+    int x;
 
-   /* Split range data*/
-   snprintf(tnet, sizeof(tnet), "%s", sip);
-   a = strtok (tnet, delimiters); /* 1st ip octect */
-   b = strtok (NULL, delimiters); /* 2nd ip octect */
-   c = strtok (NULL, delimiters); /* 3rd ip octect */
-   d = strtok (NULL, delimiters); /* 4th ip octect */
+    // Copy and split IP / prefix 
+    strncpy(ip_str, cidr, sizeof(ip_str)-1);
+    ip_str[sizeof(ip_str)-1] = '\0';
+    slash = strchr(ip_str, '/');
 
-   if ((aux = strtok (NULL, delimiters)) != NULL) /* Subnet mask */
-      e = atoi(aux); /* Subnet mask */
-   else
-      e = 24; /* Default subnet mask */
+    if (slash == NULL) {
+        prefix = 24; // default
+    } else {
+        *slash = '\0';
+        prefix = atoi(slash + 1);
+        if (prefix < 1 || prefix > 30) {
+            printf("\nERROR: Invalid CIDR prefix '%d' (must be between 1 and 30)\n\n", prefix);
+            exit(1);
+        }
+    }
 
-   /* Check all parts are ok */
-   if ((a == NULL) || (b == NULL) || (c == NULL) || (d == NULL))
-   {
-      e = -1;
-   } else {
-        k = strtol(a, &aux, 10);
-        if (k<0 || k>255 || *aux != '\0') e = -1;
-        k = strtol(b, &aux, 10);
-        if (k<0 || k>255 || *aux != '\0') e = -1;
-        k = strtol(c, &aux, 10);
-        if (k<0 || k>255 || *aux != '\0') e = -1;
-        k = strtol(d, &aux, 10);
-        if (k<0 || k>255 || *aux != '\0') e = -1;
-   }
+    ip = ip_to_int(ip_str);
+    netmask = (prefix == 32) ? 0xFFFFFFFF : (~0U << (32 - prefix));
+    network = ip & netmask;
+    broadcast = network | ~netmask;
 
-   /* Scan class C network */
-   if ( e == 24)
-   {
-      sprintf(net, "%s.%s.%s", a, b, c);
-      sprintf(current_network,"%s.0/%i", net, e);
-      scan_net(disp, net);
+    start_ip = network + 1;
+    end_ip = broadcast - 1;
 
-   }/* Scan class B network */
-   else if ( e == 16)
-   {
-      for (i=0; i<256; i++)
-      {
-         sprintf(net, "%s.%s.%i", a, b, i);
-         sprintf(current_network,"%s.%s.%i.0/%i", a, b, i, e);
-         scan_net(disp, net);
-      }
+    // Att current_network to show actual prefix
+    sprintf(current_network, "%s/%d", ip_str, prefix);
 
-   } /* Scan class A network */
-   else if ( e == 8)
-   {
-      for (k=0; k<256; k++)
-      {
-         for (i=0; i<256; i++)
-         {
-            sprintf(net, "%s.%i.%i", a, k, i);
-            sprintf(current_network,"%s.%i.%i.0/%i", a, k, i, e);
-            scan_net(disp, net);
-         }
-      }
-   }
-   else
-   {
-      // system("clear");
-      printf("\nERROR: Network range must be 0.0.0.0/8 , /16 or /24\n\n");
-      sighandler(SIGTERM);
-      sleep(5);
-      exit(1);
-   }
+    for (x = 0; x < flag_repeat_scan; x++)
+    {
+        for (uint32_t i = start_ip; i <= end_ip; i++)
+        {
+            int_to_ip(i, target_ip);
+            int_to_ip(start_ip, fromip); 
 
+            forge_arp(fromip, target_ip, disp);
+
+            if (flag_supress_sleep != 1)
+            {
+                if (flag_sleep_time != 99)
+                    usleep(flag_sleep_time * 1000);
+                else
+                    usleep(1 * 1000);
+            }
+        }
+
+        if (flag_supress_sleep == 1)
+        {
+            if (flag_sleep_time != 99)
+                usleep(flag_sleep_time * 1000);
+            else
+                usleep(1 * 1000);
+        }
+    }
 }
-
 
 /* Print usage instructions */
 void usage(char *comando)
