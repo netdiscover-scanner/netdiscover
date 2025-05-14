@@ -23,7 +23,6 @@ use of pcap_open_live() with pcap_loop(), any suggestions for fix are welcome.
 
  - libpcap
  - libnet > 1.1.2
- - Tested to work on Linux, Solaris MacOS X and OpenBSD, other unixes may work
 
 
 ## Build
@@ -44,5 +43,3 @@ To return to original source code, you can use '$ make distclean' command.
 Feel free to notify me about any problem, bug, suggestions or fixes at:
 https://github.com/netdiscover-scanner/netdiscover/issues or
 https://github.com/netdiscover-scanner/netdiscover/pulls
-
-Jaime Penalba <jpenalbae@gmail.com>
