@@ -11,7 +11,7 @@
  *  Copyright 2022      Till Zimmermann <tzimmermann@uos.de>
  *  Copyright 2024      VBrawl <konstantosjim@gmail.com>
  *  Copyright 2025      Jefferson J. Raimon <jeffersonraimon@gmail.com>
- *  Copyright 2025      quest <quest@mac.com>
+ *  Copyright 2025      Josh Ellithorpe <quest@mac.com>
  *
  ****************************************************************************/
 

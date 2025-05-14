@@ -1,7 +1,7 @@
 Netdiscover 0.20 - 13 May 2025
    * Added full support to CIDR subnets. Thanks to Jefferson J. Raimon
      <jeffersonraimon@gmail.com>.
-   * Fixed a fail to build from source with GCC 15. Thanks to  quest
+   * Fixed a fail to build from source with GCC 15. Thanks to Josh Ellithorpe
      <quest@mac.com>.
    * Updated OUI table.
 
