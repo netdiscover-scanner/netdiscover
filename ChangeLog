@@ -1,3 +1,10 @@
+Netdiscover 0.20 - 13 May 2025
+   * Added full support to CIDR subnets. Thanks to Jefferson J. Raimon
+     <jeffersonraimon@gmail.com>.
+   * Fixed a fail to build from source with GCC 15. Thanks to  quest
+     <quest@mac.com>.
+   * Updated OUI table.
+
 Netdiscover 0.11 - 26 Mar. 2025
    * Added -R option to assume user is root or that he has the required
      capabilities without running any checks. Thanks to VBrawl
