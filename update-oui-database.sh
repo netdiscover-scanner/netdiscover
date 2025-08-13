@@ -125,6 +125,12 @@ fi
 
 gzip -V > /dev/null 2> /dev/null || { printf "\nYou need gzip command to use this script.\n\n"; exit 1; }
 
+#################
+# Check for sed #
+#################
+
+sed --version > /dev/null 2> /dev/null || { printf "\nYou need sed command to use this script.\n\n"; exit 1; }
+
 ####################
 # OUI.txt download #
 ####################
@@ -164,13 +170,29 @@ then
     $DOWN $URL
 fi
 
-# Unzip if needed
+###################
+# Unzip if needed #
+###################
 
 if [ -f "${NAME}.gz" ]
 then
     echo "Found ${NAME}.gz. Unpacking..."
     gunzip "${NAME}.gz"
 fi
+
+#######################
+# Fixing known issues #
+#######################
+
+# Removing binary x01
+grep -qaP '\x01' $NAME && sed 's/\x01/ /g' $NAME > oui.x01 && mv oui.x01 $NAME
+
+# Spelling errors
+egrep -q Newtork $NAME && sed 's/Newtork/Network/g' $NAME > oui.Newtork && mv oui.Newtork $NAME
+
+######################
+# Processing OUI.txt #
+######################
 
 # Final check and conversion to Unix
 
