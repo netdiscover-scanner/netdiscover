@@ -187,9 +187,6 @@ fi
 # Removing binary x01
 grep -qaP '\x01' $NAME && sed 's/\x01/ /g' $NAME > oui.x01 && mv oui.x01 $NAME
 
-# Spelling errors
-egrep -q Newtork $NAME && sed 's/Newtork/Network/g' $NAME > oui.Newtork && mv oui.Newtork $NAME
-
 ######################
 # Processing OUI.txt #
 ######################
