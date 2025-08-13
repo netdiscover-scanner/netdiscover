@@ -184,6 +184,13 @@ fi
 
 dos2unix -q $NAME
 
+# Check the conversion to Unix
+
+egrep $'\r' $NAME > /dev/null && { printf "\n\nERROR: dos2unix failed to convert the file $NAME"; \
+                                   printf "\n\nRunning dos2unix without -q option to identify the problem:\n\n"; \
+                                   dos2unix $NAME; \
+                                   exit 1; }
+
 ######################
 # Building src/oui.h #
 ######################
