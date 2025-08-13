@@ -61,8 +61,8 @@ VERSION=0.5
 
 DATE=$(date +%F | tr -d "-")
 NAME=oui.txt-$DATE
-DATE2=$(date -r $NAME +%F)
 OUIFILE=src/oui.h
+[ -e $NAME ] && DATE2=$(date -r $NAME +%F) || DATE2=$(date +%F)
 
 # Minimum amount of MAC addresses for check. Is not needed to update this every
 # time. The main goal is check if a generated file was corrupted.
