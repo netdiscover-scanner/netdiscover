@@ -3,7 +3,8 @@
 # update-oui-database.sh
 # This script creates the src/oui.h file needed by netdiscover.
 #
-# Copyright 2016-2022 Joao Eriberto Mota Filho <eriberto@debian.org>
+# Copyright 2016-2025 Joao Eriberto Mota Filho <eriberto@debian.org>
+# Copyright 2025      Bernhard M. Wiedemann <bwiedemann+git@suse.de>
 # This file is under GPL-2+ license.
 #
 # netdiscover was written by Jaime Penalba Estebanez <jpenalbae@gmail.com>
