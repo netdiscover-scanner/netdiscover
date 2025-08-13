@@ -26,14 +26,21 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-VERSION=0.5
+VERSION=0.6
 
 # CHANGELOG
 #
+# v0.6, 2025-08-14, Eriberto
+#
+# * Using mtime to define DATA2 to make update-oui-database.sh reproducible.
+#   Thanks to Bernhard M. Wiedemann <bwiedemann+git@suse.de>. (PR #38)
+# * Added an autofix for x01 binary byte.
+# * Added a check for dos2unix results.
+#
 # v0.5, 2022-10-29, Eriberto
 #
-# Change main download site from https://linuxnet.ca/ieee/oui.txt (link down)
-# to https://standards-oui.ieee.org. (Fix #23)
+# * Change main download site from https://linuxnet.ca/ieee/oui.txt (link down)
+#   to https://standards-oui.ieee.org. (Fix #23)
 #
 # v0.4, 2022-02-17, Eriberto
 #
