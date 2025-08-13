@@ -59,8 +59,8 @@ VERSION=0.5
 #####################
 
 DATE=$(date +%F | tr -d "-")
-DATE2=$(date +%F)
 NAME=oui.txt-$DATE
+DATE2=$(date -r $NAME +%F)
 OUIFILE=src/oui.h
 
 # Minimum amount of MAC addresses for check. Is not needed to update this every
