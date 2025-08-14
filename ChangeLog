@@ -1,3 +1,12 @@
+Netdiscover 0.21 - 14 Aug 2025
+   * update-oui-database.sh:
+     - Using mtime to define DATA2 to update-oui-database.sh reproducible.
+       Thanks to Bernhard M. Wiedemann <bwiedemann+git@suse.de>. (PR #38)
+     - Added an autofix for x01 binary byte.
+     - Added a check for dos2unix results.
+     - Released version 0.6.
+   * Updated OUI table.
+
 Netdiscover 0.20 - 13 May 2025
    * Added full support to CIDR subnets. Thanks to Jefferson J. Raimon
      <jeffersonraimon@gmail.com>.
